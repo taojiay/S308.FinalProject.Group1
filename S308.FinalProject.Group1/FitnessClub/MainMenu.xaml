@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainMenu" Height="300" Width="300">
     <Grid>
-        
+        <Label x:Name="lblTitle" Content="Fitness Club Membership" HorizontalAlignment="Left" Margin="71,36,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnMembershipSales" Content="Membership&#xD;&#xA;Sales" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="75" Height="34" Click="button_Click"/>
+        <Button x:Name="btnPricingManagement" Content="Pricing&#xD;&#xA;Management" HorizontalAlignment="Left" Margin="107,106,0,0" VerticalAlignment="Top" Width="75" Height="34" Click="button_Click"/>
+        <Button x:Name="btnMemberInformation" Content="Member&#xD;&#xA;Information" HorizontalAlignment="Left" Margin="207,106,0,0" VerticalAlignment="Top" Width="75" Height="34" Click="button_Click"/>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="107,199,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>
