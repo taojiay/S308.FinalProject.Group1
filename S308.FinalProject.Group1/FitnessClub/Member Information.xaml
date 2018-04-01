@@ -11,11 +11,12 @@
         <Label x:Name="lblLastName" Content="Last Name:" HorizontalAlignment="Left" Height="46" Margin="44,112,0,0" VerticalAlignment="Top" Width="269" FontSize="21.333"/>
         <Label x:Name="lblPhoneNumber" Content="Phone Number:" HorizontalAlignment="Left" Height="46" Margin="44,204,0,0" VerticalAlignment="Top" Width="269" FontSize="21.333"/>
         <Label x:Name="lblEmail" Content="Email:" HorizontalAlignment="Left" Height="46" Margin="44,158,0,0" VerticalAlignment="Top" Width="269" FontSize="21.333"/>
-        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="41" Margin="280,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
-        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Height="243" Margin="44,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="750"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="41" Margin="280,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="41" Margin="280,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
-        <Button x:Name="btnMainPage" Content="Main Page" HorizontalAlignment="Left" Height="41" Margin="689,10,0,0" VerticalAlignment="Top" Width="128"/>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="41" Margin="642,163,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="41" Margin="280,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" TabIndex="0"/>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Height="243" Margin="44,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="750" IsTabStop="False"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="41" Margin="280,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" TabIndex="2"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="41" Margin="280,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" TabIndex="1"/>
+        <Button x:Name="btnMainPage" Content="Main Page" HorizontalAlignment="Left" Height="41" Margin="689,10,0,0" VerticalAlignment="Top" Width="128" TabIndex="5"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="41" Margin="636,133,0,0" VerticalAlignment="Top" Width="128" TabIndex="3"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Height="41" Margin="636,204,0,0" VerticalAlignment="Top" Width="128" TabIndex="4"/>
     </Grid>
 </Window>
