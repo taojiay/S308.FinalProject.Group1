@@ -66,8 +66,22 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="MembershipInfoConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MembershipSignup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MembershipInfoConfirmation.xaml.cs">
+      <DependentUpon>MembershipInfoConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipSignup.xaml.cs">
+      <DependentUpon>MembershipSignup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
