@@ -66,6 +66,10 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Member Information.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MembershipInfoConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,13 +78,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pricing Management.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Member Information.xaml.cs">
+      <DependentUpon>Member Information.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MembershipInfoConfirmation.xaml.cs">
       <DependentUpon>MembershipInfoConfirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="MembershipSignup.xaml.cs">
       <DependentUpon>MembershipSignup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing Management.xaml.cs">
+      <DependentUpon>Pricing Management.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -107,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

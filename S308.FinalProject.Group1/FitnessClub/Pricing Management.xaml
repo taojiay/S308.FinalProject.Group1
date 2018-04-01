@@ -1,0 +1,43 @@
+﻿<Window x:Class="FitnessClub.Pricing_Management"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessClub"
+        mc:Ignorable="d"
+        Title="Pricing_Management" Height="381.122" Width="465.935">
+    <Grid Margin="0,0,2,-3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="587*"/>
+            <ColumnDefinition Width="32*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblPricingManagement" Content="Pricing Management" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="169" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="lblType" Content="Type:" HorizontalAlignment="Left" Height="27" Margin="10,42,0,0" VerticalAlignment="Top" Width="49" FontSize="13.333"/>
+        <Label x:Name="lblAvailable" Content="Available:" HorizontalAlignment="Left" Height="27" Margin="10,136,0,0" VerticalAlignment="Top" Width="72" FontSize="13.333"/>
+        <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Height="27" Margin="10,89,0,0" VerticalAlignment="Top" Width="49" FontSize="13.333"/>
+        <Label x:Name="lblAdditionalFeatures" Content="Additional Features:" HorizontalAlignment="Left" Height="32" Margin="10,185,0,0" VerticalAlignment="Top" Width="169" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="lblFeatureType" Content="Feature Type:" HorizontalAlignment="Left" Height="27" Margin="10,222,0,0" VerticalAlignment="Top" Width="97" FontSize="13.333" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.067"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="lblFeaturePrice" Content="Price:" HorizontalAlignment="Left" Height="27" Margin="10,267,0,0" VerticalAlignment="Top" Width="49" FontSize="13.333"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="27" Margin="116,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"/>
+        <TextBox x:Name="txtFeaturePrice" HorizontalAlignment="Left" Height="27" Margin="116,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"/>
+        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Height="22" Margin="116,47,0,0" VerticalAlignment="Top" Width="111"/>
+        <ComboBox x:Name="cbxFeature" HorizontalAlignment="Left" Height="22" Margin="116,222,0,0" VerticalAlignment="Top" Width="111">
+            <ComboBoxItem Content="Personal Training Plan"/>
+            <ComboBoxItem Content="Locker Rental"/>
+        </ComboBox>
+        <CheckBox x:Name="checkboxAvailable" Content="" HorizontalAlignment="Left" Height="27" Margin="116,143,0,0" VerticalAlignment="Top" Width="18"/>
+        <Button x:Name="btnMainPage" Grid.ColumnSpan="2" Content="Main Page" HorizontalAlignment="Left" Height="32" Margin="377,10,0,0" VerticalAlignment="Top" Width="69"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Height="32" Margin="339,131,0,0" VerticalAlignment="Top" Width="66"/>
+        <Button x:Name="btnFeatureSubmit" Content="Submit" HorizontalAlignment="Left" Height="32" Margin="339,262,0,0" VerticalAlignment="Top" Width="66"/>
+
+    </Grid>
+</Window>
