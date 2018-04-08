@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="Membership Signup" Height="600" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="435*"/>
+            <ColumnDefinition Width="18*"/>
+        </Grid.ColumnDefinitions>
         <Label x:Name="lblMembershipSignupTitle" Content="Membership Signup Form" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblFirstName" Content="First Name: " HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblLastName" Content="Last Name: " HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
@@ -14,40 +20,40 @@
         <Label x:Name="lblAge" Content="Age (optional): " HorizontalAlignment="Left" Margin="11,254,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblWeight" Content="Weight (optional): " HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPersonalFitnessGoal" Content="Personal Fitness Goal (optional): " HorizontalAlignment="Left" Margin="10,356,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPhone" Content="Phone: " HorizontalAlignment="Left" Margin="415,106,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEmail" Content="Email: " HorizontalAlignment="Left" Margin="415,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCreditCardType" Content="Credit Card Type: " HorizontalAlignment="Left" Margin="415,197,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCreditCardNumber" Content="Credit Card Number: " HorizontalAlignment="Left" Margin="415,242,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPhone" Content="Phone: " HorizontalAlignment="Left" Margin="76.143,106,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label x:Name="lblEmail" Content="Email: " HorizontalAlignment="Left" Margin="76.143,150,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label x:Name="lblCreditCardType" Content="Credit Card Type: " HorizontalAlignment="Left" Margin="76.143,197,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label x:Name="lblCreditCardNumber" Content="Credit Card Number: " HorizontalAlignment="Left" Margin="76.143,242,0,0" VerticalAlignment="Top" Grid.Column="2"/>
         <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="108,110,0,0" TextWrapping="Wrap" Text="Lucy" VerticalAlignment="Top" Width="120" TabIndex="0"/>
-        <Button x:Name="btnReturntoMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="676,21,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnReturntoMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="337.143,21,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
         <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="23" Margin="108,152,0,0" TextWrapping="Wrap" Text="Tao" VerticalAlignment="Top" Width="120" TabIndex="1"/>
-        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="473,106,0,0" TextWrapping="Wrap" Text="8121111111" VerticalAlignment="Top" Width="120" TabIndex="3"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="473,154,0,0" TextWrapping="Wrap" Text="taojiay@iu.edu" VerticalAlignment="Top" Width="120" TabIndex="4"/>
-        <TextBox x:Name="txtCreditCardNumber" HorizontalAlignment="Left" Height="23" Margin="554,242,0,0" TextWrapping="Wrap" Text="1111111111111111" VerticalAlignment="Top" Width="120" TabIndex="6"/>
-        <TextBox x:Name="txtAge" HorizontalAlignment="Left" Height="23" Margin="115,256,0,0" TextWrapping="Wrap" Text="22" VerticalAlignment="Top" Width="120" TabIndex="7"/>
+        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="134.143,106,0,0" TextWrapping="Wrap" Text="8121111111" VerticalAlignment="Top" Width="120" TabIndex="3" Grid.Column="2"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="134.143,154,0,0" TextWrapping="Wrap" Text="taojiay@iu.edu" VerticalAlignment="Top" Width="120" TabIndex="4" Grid.Column="2"/>
+        <TextBox x:Name="txtCreditCardNumber" HorizontalAlignment="Left" Height="23" Margin="215.143,242,0,0" TextWrapping="Wrap" Text="1111111111111111" VerticalAlignment="Top" Width="120" TabIndex="6" Grid.Column="2"/>
+        <TextBox x:Name="txtAge" HorizontalAlignment="Left" Height="23" Margin="115,256,0,0" TextWrapping="Wrap" Text="22" VerticalAlignment="Top" Width="120" TabIndex="7" Grid.ColumnSpan="2"/>
         <TextBox x:Name="txtAge_Copy" HorizontalAlignment="Left" Height="23" Margin="132,304,0,0" TextWrapping="Wrap" Text="140" VerticalAlignment="Top" Width="60" TabIndex="8"/>
-        <Label x:Name="lbllbs" Content="lbs" HorizontalAlignment="Left" Margin="208,304,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbllbs" Content="lbs" HorizontalAlignment="Left" Margin="208,304,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <ComboBox x:Name="cboGender" HorizontalAlignment="Left" Margin="108,197,0,0" VerticalAlignment="Top" Width="120" TabIndex="2">
             <ComboBoxItem Content="M"/>
             <ComboBoxItem Content="F"/>
             <ComboBoxItem Content="Not Provided"/>
         </ComboBox>
-        <ComboBox x:Name="cboCreditCardType" HorizontalAlignment="Left" Margin="533,197,0,0" VerticalAlignment="Top" Width="141" TabIndex="5">
+        <ComboBox x:Name="cboCreditCardType" HorizontalAlignment="Left" Margin="194.143,197,0,0" VerticalAlignment="Top" Width="141" TabIndex="5" Grid.Column="2">
             <ComboBoxItem Content="Visa"/>
             <ComboBoxItem Content="Master"/>
             <ComboBoxItem Content="Discover"/>
             <ComboBoxItem Content="American Express"/>
         </ComboBox>
-        <ComboBox x:Name="cboPersonalFitnessGoal" HorizontalAlignment="Left" Margin="226,360,0,0" VerticalAlignment="Top" Width="120" TabIndex="9">
+        <ComboBox x:Name="cboPersonalFitnessGoal" HorizontalAlignment="Left" Margin="226,360,0,0" VerticalAlignment="Top" Width="120" TabIndex="9" Grid.ColumnSpan="3">
             <ComboBoxItem Content="Athletic Performance"/>
             <ComboBoxItem Content="Overall Health"/>
             <ComboBoxItem Content="Strength Training Weight Loss"/>
             <ComboBoxItem Content="Weight Management"/>
         </ComboBox>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="655,438,0,0" VerticalAlignment="Top" Width="75" TabIndex="10"/>
-        <Label x:Name="lblSignupInstruction" Content="To prefill the personal information form from the pervious data, please enter the first name, last name, and phone number first. &#xD;&#xA;Then, click the &quot;Search&quot; button. " HorizontalAlignment="Left" Margin="11,45,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnSearchforPrefill" Content="Search" HorizontalAlignment="Left" Margin="415,438,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnClear" Content="Clear All" HorizontalAlignment="Left" Margin="533,438,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="316.143,438,0,0" VerticalAlignment="Top" Width="75" TabIndex="10" Grid.Column="2"/>
+        <Label x:Name="lblSignupInstruction" Content="To prefill the personal information form from the pervious data, please enter the first name, last name, and phone number first. &#xD;&#xA;Then, click the &quot;Search&quot; button. " HorizontalAlignment="Left" Margin="11,45,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+        <Button x:Name="btnSearchforPrefill" Content="Search" HorizontalAlignment="Left" Margin="76.143,438,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
+        <Button x:Name="btnClear" Content="Clear All" HorizontalAlignment="Left" Margin="194.143,438,0,0" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
 
     </Grid>
 </Window>

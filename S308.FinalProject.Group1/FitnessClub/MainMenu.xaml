@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessClub"
         mc:Ignorable="d"
-        Title="MainMenu" Height="600" Width="800">
-    <Grid>
-        <Label x:Name="lblTitle" Content="Fitness Club Membership" HorizontalAlignment="Left" Margin="313,160,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnMembershipSales" Content="Membership&#xD;&#xA;Sales" HorizontalAlignment="Left" Margin="252,230,0,0" VerticalAlignment="Top" Width="75" Height="34" Click="button_Click" TabIndex="1"/>
-        <Button x:Name="btnPricingManagement" Content="Pricing&#xD;&#xA;Management" HorizontalAlignment="Left" Margin="349,230,0,0" VerticalAlignment="Top" Width="75" Height="34" Click="button_Click" TabIndex="2"/>
-        <Button x:Name="btnMemberInformation" Content="Member&#xD;&#xA;Information" HorizontalAlignment="Left" Margin="449,230,0,0" VerticalAlignment="Top" Width="75" Height="34" Click="button_Click" TabIndex="3"/>
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="349,323,0,0" VerticalAlignment="Top" Width="75" TabIndex="4"/>
+        Title="MainMenu" Height="600" Width="800" FontSize="16">
+    <Grid Background="#FFFFFCE9" OpacityMask="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblTitle" Content="Fitness Club Membership" HorizontalAlignment="Left" Margin="63,107,0,0" VerticalAlignment="Top" BorderBrush="White" Height="80" Width="677" FontSize="48" Foreground="#FFF57921" FontFamily="Stencil" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnMembershipSales" Content="Membership&#xD;&#xA;Sales" Margin="58,192,0,0" Width="200" Height="160" Click="button_Click" FontSize="29.333" FontWeight="Bold" FontStyle="Oblique" FontFamily="Sitka Display" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" BorderBrush="White" Foreground="#FF596770" UseLayoutRounding="True"/>
+        <Button x:Name="btnPricingManagement" Content="Pricing &#xD;&#xA;Management" Margin="296,192,0,0" Width="200" Height="160" Click="button_Click" FontSize="29.333" FontWeight="Bold" FontStyle="Oblique" FontFamily="Sitka Display" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" BorderBrush="White" Foreground="#FF596770" UseLayoutRounding="True" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnMemberInformation" Content="Member &#xD;&#xA;Information" Margin="204,192,0,0" Width="200" Height="160" Click="button_Click" FontSize="29.333" FontWeight="Bold" FontStyle="Oblique" FontFamily="Sitka Display" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" BorderBrush="White" Foreground="#FF596770" UseLayoutRounding="True" Grid.Column="1"/>
+        <Button x:Name="btnExit" Content="Exit" Margin="290,392,0,0" Width="224" Height="72" Click="button_Click" FontSize="29.333" FontWeight="Bold" FontStyle="Oblique" FontFamily="Sitka Display" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF596770" BorderBrush="White" Foreground="White" UseLayoutRounding="True" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

@@ -10,22 +10,33 @@
         <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="662,29,0,0" VerticalAlignment="Top" Width="75" TabIndex="7"/>
         <Label x:Name="lblTitle" Content="Membership Sales" HorizontalAlignment="Left" Margin="334,64,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMembershipType" Content="Membership Type" HorizontalAlignment="Left" Margin="81,127,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cobMembershipType" HorizontalAlignment="Left" Margin="518,131,0,0" VerticalAlignment="Top" Width="120" TabIndex="1">
-            <ComboBoxItem Content="ComboBoxItem" HorizontalAlignment="Left" Width="118" Selected="ComboBoxItem_Selected"/>
+        <ComboBox x:Name="cobMembershipType" HorizontalAlignment="Left" Margin="518,131,0,0" VerticalAlignment="Top" Width="146" TabIndex="1" SelectedIndex="1">
+            <ComboBoxItem Content="Individual 1 Month" HorizontalAlignment="Left" Width="118" Selected="ComboBoxItem_Selected"/>
+            <ComboBoxItem Content="Individual 12 Month" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Two Person 1 Month" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Two Person 12 Month" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Family 1 Month" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Family 12 Month" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <Label x:Name="lblMembershipStartDate" Content="Membership Start Date" HorizontalAlignment="Left" Margin="81,186,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblAdditionalFeatures" Content="Additional Features" HorizontalAlignment="Left" Margin="81,251,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtPricingResult" HorizontalAlignment="Left" Height="158" Margin="81,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="557"/>
-        <DatePicker x:Name="dtpMembershipStartDate" HorizontalAlignment="Left" Margin="518,186,0,0" VerticalAlignment="Top" TabIndex="2">
+        <TextBox x:Name="txtPricingResult" HorizontalAlignment="Left" Height="158" Margin="81,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="583" TextChanged="txtPricingResult_TextChanged"/>
+        <DatePicker x:Name="dtpMembershipStartDate" HorizontalAlignment="Left" Margin="518,186,0,0" VerticalAlignment="Top" TabIndex="2" DisplayDate="2018-04-08" >
             <DatePicker.BlackoutDates>
                 <CalendarDateRange/>
             </DatePicker.BlackoutDates>
         </DatePicker>
         <Button x:Name="btnSignUp" Content="Sign Up" HorizontalAlignment="Left" Margin="386,492,0,0" VerticalAlignment="Top" Width="75" TabIndex="5"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="518,492,0,0" VerticalAlignment="Top" Width="75" TabIndex="6"/>
-        <CheckBox x:Name="ckbPersonalTrainingPlan" Content="Personal Training Plan" HorizontalAlignment="Left" Margin="519,251,0,0" VerticalAlignment="Top" TabIndex="3"/>
+        <CheckBox x:Name="ckbPersonalTrainingPlan" Content="Personal Training Plan" HorizontalAlignment="Left" Margin="519,251,0,0" VerticalAlignment="Top" TabIndex="3" IsChecked="True"/>
         <CheckBox x:Name="ckbLockerRental" Content="Locker Rental" HorizontalAlignment="Left" Margin="519,271,0,0" VerticalAlignment="Top" TabIndex="4"/>
         <Label x:Name="lblPricingResult" Content="Pricing Result:" HorizontalAlignment="Left" Margin="81,300,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMembershipEndDate" Content="Membership End Date" HorizontalAlignment="Left" Margin="81,212,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtpMembershipEndDate" HorizontalAlignment="Left" Margin="518,215,0,0" VerticalAlignment="Top" TabIndex="2">
+            <DatePicker.BlackoutDates>
+                <CalendarDateRange/>
+            </DatePicker.BlackoutDates>
+        </DatePicker>
 
     </Grid>
 </Window>
