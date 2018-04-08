@@ -37,6 +37,7 @@
                 <CalendarDateRange/>
             </DatePicker.BlackoutDates>
         </DatePicker>
+        <Label x:Name="lblMockUp" Content="Membership Type: Individual 12 Month&#xD;&#xA;Start Date: 4/8/2018&#xD;&#xA;End Date: 4/8/2019&#xD;&#xA;Membership Cost Per Month: $100.00&#xD;&#xA;Subtotal: $100.00&#xD;&#xA;Additional Features: Personal Training Plan&#xD;&#xA;Total: $160.00&#xD;&#xA;" HorizontalAlignment="Left" Margin="96,331,0,0" VerticalAlignment="Top" Width="365" Height="141"/>
 
     </Grid>
 </Window>
