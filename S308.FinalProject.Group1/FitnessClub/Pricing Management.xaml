@@ -1,35 +1,25 @@
-﻿<Window x:Class="FitnessClub.Pricing_Management"
+﻿<Window x:Name="winPricingManagement" x:Class="FitnessClub.Pricing_Management"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessClub"
         mc:Ignorable="d"
-        Title="Pricing_Management" Height="600" Width="800">
+        Title="Pricing Management" Height="600" Width="800" Background="#FFFFFCE9">
     <Grid Margin="0,0,2,-3">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="587*"/>
-            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="lblPricingManagement" Content="Pricing Management" HorizontalAlignment="Left" Height="32" Margin="10,10,0,0" VerticalAlignment="Top" Width="169" FontWeight="Bold" FontSize="16"/>
-        <Label x:Name="lblType" Content="Type:" HorizontalAlignment="Left" Height="27" Margin="10,42,0,0" VerticalAlignment="Top" Width="49" FontSize="13.333"/>
-        <Label x:Name="lblAvailable" Content="Available:" HorizontalAlignment="Left" Height="27" Margin="10,136,0,0" VerticalAlignment="Top" Width="72" FontSize="13.333"/>
-        <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Height="27" Margin="10,89,0,0" VerticalAlignment="Top" Width="49" FontSize="13.333"/>
-        <Label x:Name="lblAdditionalFeatures" Content="Additional Features:" HorizontalAlignment="Left" Height="32" Margin="10,185,0,0" VerticalAlignment="Top" Width="169" FontWeight="Bold" FontSize="16"/>
-        <Label x:Name="lblFeatureType" Content="Feature Type:" HorizontalAlignment="Left" Height="27" Margin="10,222,0,0" VerticalAlignment="Top" Width="97" FontSize="13.333" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="1.067"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label x:Name="lblFeaturePrice" Content="Price:" HorizontalAlignment="Left" Height="27" Margin="10,267,0,0" VerticalAlignment="Top" Width="49" FontSize="13.333"/>
-        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="27" Margin="116,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" TabIndex="1" Text="11.60"/>
-        <TextBox x:Name="txtFeaturePrice" HorizontalAlignment="Left" Height="27" Margin="116,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" TabIndex="5" Text="2.50"/>
-        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Height="22" Margin="116,47,0,0" VerticalAlignment="Top" Width="139" TabIndex="0" SelectedIndex="1">
+        <Label x:Name="lblPricingManagement" Content="Pricing Management" HorizontalAlignment="Left" Height="72" Margin="169,40,0,0" VerticalAlignment="Top" Width="443" FontWeight="Bold" FontSize="38" FontFamily="Stencil" Foreground="#FFF57923"/>
+        <Label x:Name="lblType" Content="Type:" HorizontalAlignment="Left" Height="42" Margin="46,237,0,0" VerticalAlignment="Top" Width="72" FontSize="20" Foreground="#FF596770" FontFamily="Sitka Display" FontWeight="Bold"/>
+        <Label x:Name="lblAvailable" Content="Available?:" HorizontalAlignment="Left" Height="34" Margin="46,355,0,0" VerticalAlignment="Top" Width="106" FontSize="20" Foreground="#FF596770" FontFamily="Sitka Display" FontWeight="Bold"/>
+        <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Height="42" Margin="46,300,0,0" VerticalAlignment="Top" Width="72" FontSize="20" Foreground="#FF596770" FontFamily="Sitka Display" FontWeight="Bold"/>
+        <Label x:Name="lblAdditionalFeatures" Content="Additional Features:" HorizontalAlignment="Left" Height="32" Margin="416,175,0,0" VerticalAlignment="Top" Width="217" FontWeight="Bold" FontSize="24" FontFamily="Sitka Display" Foreground="#FFF57923" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="lblFeatureType" Content="Feature Type:" HorizontalAlignment="Left" Height="35" Margin="416,237,0,0" VerticalAlignment="Top" Width="129" FontSize="20" RenderTransformOrigin="0.5,0.5" Foreground="#FF596770" FontFamily="Sitka Display" FontWeight="Bold"/>
+        <Label x:Name="lblFeaturePrice" Content="Price:" HorizontalAlignment="Left" Height="41" Margin="416,300,0,0" VerticalAlignment="Top" Width="72" FontSize="20" Foreground="#FF596770" FontFamily="Sitka Display" FontWeight="Bold"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="34" Margin="118,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TabIndex="1" Text="11.60" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
+        <TextBox x:Name="txtFeaturePrice" HorizontalAlignment="Left" Height="34" Margin="488,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" TabIndex="5" Text="2.50" FontFamily="Sitka Display" FontSize="20" Foreground="#FF596770"/>
+        <ComboBox x:Name="cbxType" HorizontalAlignment="Left" Height="41" Margin="118,237,0,0" VerticalAlignment="Top" Width="246" TabIndex="0" SelectedIndex="1" FontFamily="Sitka Display" FontSize="20" Foreground="#FF596770">
             <ComboBoxItem Content="Individual 1 Month" HorizontalAlignment="Left" />
             <ComboBoxItem Content="Individual 12 Month" HorizontalAlignment="Left"/>
             <ComboBoxItem Content="Two Person 1 Month" HorizontalAlignment="Left" />
@@ -37,14 +27,17 @@
             <ComboBoxItem Content="Family 1 Month" HorizontalAlignment="Left" />
             <ComboBoxItem Content="Family 12 Month" HorizontalAlignment="Left"/>
         </ComboBox>
-        <ComboBox x:Name="cbxFeature" HorizontalAlignment="Left" Height="22" Margin="116,222,0,0" VerticalAlignment="Top" Width="111" TabIndex="4" SelectedIndex="1">
+        <ComboBox x:Name="cbxFeature" Height="37" Margin="550,235,45.333,0" VerticalAlignment="Top" TabIndex="4" SelectedIndex="1" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20">
             <ComboBoxItem Content="Personal Training Plan"/>
             <ComboBoxItem Content="Locker Rental"/>
         </ComboBox>
-        <CheckBox x:Name="checkboxAvailable" Content="" HorizontalAlignment="Left" Height="27" Margin="116,143,0,0" VerticalAlignment="Top" Width="18" TabIndex="2"/>
-        <Button x:Name="btnMainPage" Grid.ColumnSpan="2" Content="Main Page" HorizontalAlignment="Left" Height="32" Margin="377,10,0,0" VerticalAlignment="Top" Width="69" TabIndex="7"/>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Height="32" Margin="339,131,0,0" VerticalAlignment="Top" Width="66" TabIndex="3"/>
-        <Button x:Name="btnFeatureSubmit" Content="Submit" HorizontalAlignment="Left" Height="32" Margin="339,262,0,0" VerticalAlignment="Top" Width="66" TabIndex="6"/>
+        <CheckBox x:Name="ckbAvailable" Content="" HorizontalAlignment="Left" Height="27" Margin="157,362,0,0" VerticalAlignment="Top" Width="18" TabIndex="2" FontSize="20" FontFamily="Sitka Display"/>
+        <Button x:Name="btnMembershipSubmit" Content="Submit" HorizontalAlignment="Left" Height="48" Margin="265,431,0,0" VerticalAlignment="Top" Width="99" TabIndex="3" Background="#FFF57923" Foreground="White" BorderBrush="White" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Width="113" TabIndex="7" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="43" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="logo1.png" Margin="10,10,0,0" Stretch="Fill"/>
+        <Label x:Name="lblInstruction" Content="Please fill in the following information to change the prices. Press the &quot;Submit&quot; button&#xD;&#xA;under the section to complete the process. " HorizontalAlignment="Left" Margin="115,107,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="16" FontStyle="Italic" Width="617"/>
+        <Label x:Name="lblMembership" Content="Membership:" HorizontalAlignment="Left" Height="32" Margin="46,175,0,0" VerticalAlignment="Top" Width="169" FontWeight="Bold" FontSize="24" FontFamily="Sitka Display" Foreground="#FFF57923"/>
+        <Button x:Name="btnFeaturesSubmit" Content="Submit" HorizontalAlignment="Left" Height="48" Margin="647,431,0,0" VerticalAlignment="Top" Width="99" TabIndex="6" Background="#FFF57923" Foreground="White" BorderBrush="White" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
 
     </Grid>
 </Window>

@@ -5,34 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessClub"
         mc:Ignorable="d"
-        Title="Membership Information Confirmation" Height="600" Width="800">
+        Title="Membership Information Confirmation" Height="600" Width="800" Background="#FFFFFCE9">
     <Grid>
-        <Label x:Name="lblMembershipInfoConfirmationTitle" Content="Membership Information Confirmation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblFirstName" Content="First Name: " HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblLastName" Content="Last Name: " HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblGender" Content="Gender: " HorizontalAlignment="Left" Margin="11,197,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblAge" Content="Age (optional): " HorizontalAlignment="Left" Margin="11,242,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblWeight" Content="Weight (optional): " HorizontalAlignment="Left" Margin="10,288,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPersonalFitnessGoal" Content="Personal Fitness Goal (optional): " HorizontalAlignment="Left" Margin="10,344,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPhone" Content="Phone: " HorizontalAlignment="Left" Margin="415,106,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEmail" Content="Email: " HorizontalAlignment="Left" Margin="415,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCreditCardType" Content="Credit Card Type: " HorizontalAlignment="Left" Margin="415,197,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCreditCardNumber" Content="Credit Card Number: " HorizontalAlignment="Left" Margin="415,242,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnReturntoMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="676,21,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="lbllbs" Content="lbs" HorizontalAlignment="Left" Margin="181,288,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="655,420,0,0" VerticalAlignment="Top" Width="75" TabIndex="0"/>
-        <Label x:Name="lblConfirmationInstruction" Content="Please check if all the information is correct." HorizontalAlignment="Left" Margin="11,54,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnBackToPreviousStep" Content="Back" HorizontalAlignment="Left" Margin="533,420,0,0" VerticalAlignment="Top" Width="75" TabIndex="1"/>
-        <Label x:Name="lblFirstNameInput" Content="Lucy" HorizontalAlignment="Left" Margin="94,106,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblLastNameInput" Content="Tao" HorizontalAlignment="Left" Margin="94,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblGenderInput" Content="F" HorizontalAlignment="Left" Margin="78,197,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblAgeInput" Content="22" HorizontalAlignment="Left" Margin="115,242,0,0" VerticalAlignment="Top" Width="51"/>
-        <Label x:Name="lblWeightInput" Content="140" HorizontalAlignment="Left" Margin="132,288,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPhoneInput" Content="8121111111" HorizontalAlignment="Left" Margin="473,106,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEmailInput" Content="taojiay@iu.edu" HorizontalAlignment="Left" Margin="473,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCreditCardTypeInput" Content="Discover" HorizontalAlignment="Left" Margin="533,197,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCreditCardNumberInput" Content="111111111111111" HorizontalAlignment="Left" Margin="553,242,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPersonalFitnessGoalInput" Content="Weight Management" HorizontalAlignment="Left" Margin="213,344,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMembershipInfoConfirmationTitle" Content="Membership Information Confirmation" HorizontalAlignment="Left" Margin="119,61,0,0" VerticalAlignment="Top" Foreground="#FFF28935" FontFamily="Stencil" FontSize="28" FontWeight="Bold"/>
+        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="589,440,0,0" VerticalAlignment="Top" Width="105" TabIndex="0" Background="#FFF28935" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Sitka Display" Height="50" BorderBrush="White"/>
+        <Label x:Name="lblConfirmationInstruction" Content="Please check if all the information is correct. Click on &quot;confirm&quot; to submit the information. &#xD;&#xA;Otherwise, click &quot;Back&quot; to re-enter the information." HorizontalAlignment="Left" Margin="119,109,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Sitka Display" FontStyle="Italic" Foreground="#FF596770"/>
+        <Button x:Name="btnBackToPreviousStep" Content="Back" HorizontalAlignment="Left" Margin="473,460,0,0" VerticalAlignment="Top" Width="75" TabIndex="1" Background="White" Foreground="#FF596770" FontFamily="Sitka Display" FontStyle="Italic" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.329,0.409"/>
+        <Label x:Name="lblFirstNameInput" Content="Lucy" HorizontalAlignment="Left" Margin="233,176,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Width="127"/>
+        <Label x:Name="lblLastNameInput" Content="Tao" HorizontalAlignment="Left" Margin="233,220,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Width="127"/>
+        <Label x:Name="lblGenderInput" Content="F" HorizontalAlignment="Left" Margin="502,180,0,0" VerticalAlignment="Top" RenderTransformOrigin="11.958,-17.372" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Width="143"/>
+        <Label x:Name="lblAgeInput" Content="22" HorizontalAlignment="Left" Margin="469,223,0,0" VerticalAlignment="Top" Width="73" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
+        <Label x:Name="lblPhoneInput" Content="8121111111" HorizontalAlignment="Left" Margin="200,264,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontSize="20" FontFamily="Sitka Display" Width="160"/>
+        <Label x:Name="lblEmailInput" Content="taojiay@iu.edu" HorizontalAlignment="Left" Margin="200,308,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Width="160"/>
+        <Label x:Name="lblCreditCardTypeInput" Content="Master" HorizontalAlignment="Left" Margin="129,377,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Width="167"/>
+        <Label x:Name="lblCreditCardNumberInput" Content="111111111111111" HorizontalAlignment="Left" Margin="129,449,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Width="167"/>
+        <Label x:Name="lblPersonalFitnessGoalInput" Content="Weight Management" HorizontalAlignment="Left" Margin="433,339,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Width="299"/>
+        <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Width="113" TabIndex="2" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="43" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="logo1.png" Margin="10,10,0,0" Stretch="Fill"/>
+        <Label x:Name="lblFirstName" Content="First Name: " HorizontalAlignment="Left" Margin="119,176,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontWeight="Bold" FontSize="20"/>
+        <Label x:Name="lblLastName" Content="Last Name: " HorizontalAlignment="Left" Margin="118,220,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblGender" Content="Gender: " HorizontalAlignment="Left" Margin="418,180,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblAge" Content="Age: " HorizontalAlignment="Left" Margin="418,224,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblWeight" Content="Weight: " HorizontalAlignment="Left" Margin="418,268,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblPersonalFitnessGoal" Content="Personal Fitness Goal: " HorizontalAlignment="Left" Margin="418,310,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblPhone" Content="Phone: " HorizontalAlignment="Left" Margin="119,264,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblEmail" Content="Email: " HorizontalAlignment="Left" Margin="118,308,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblCreditCardType" Content="Credit Card Type: " HorizontalAlignment="Left" Margin="118,348,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblCreditCardNumber" Content="Credit Card Number: " HorizontalAlignment="Left" Margin="118,420,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lbllbs" Content="lbs" HorizontalAlignment="Left" Margin="551,268,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
+        <Label x:Name="lblWeightInput" Content="140" HorizontalAlignment="Left" Margin="495,268,0,0" VerticalAlignment="Top" Width="58" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
 
     </Grid>
 </Window>

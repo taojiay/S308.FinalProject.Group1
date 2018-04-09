@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Team 1: Jiayi Tao, Yuheng Cao, Zheng Huang
+//logo image source: 123RF.com
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
