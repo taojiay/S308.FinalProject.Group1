@@ -25,5 +25,13 @@ namespace FitnessClub
         {
             InitializeComponent();
         }
+
+        //link membership sales button with MembershipSales and close main menu
+
+        //link pricing management button with Pricing_Management and close main menu
+
+        //link member information button with Member_Information and close main menu
+
+        //create exit button function
     }
 }

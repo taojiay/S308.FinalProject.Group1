@@ -23,6 +23,23 @@ namespace FitnessClub
         public Pricing_Management()
         {
             InitializeComponent();
+            //clear all the inputs
         }
+
+        //when click on membership "submit" button:
+            //validation
+            //check if type and price the fields are filled or selected
+            //check if the price can be parsed
+
+            //confirmation message
+
+        //when click on features "submit" button: 
+            //validation:
+            //check if type and price the fields are filled or selected
+            //check if the price can be parsed
+
+            //confirmation message
+
+        //create back to main meanu function, close current window
     }
 }

@@ -23,6 +23,22 @@ namespace FitnessClub
         public Member_Information()
         {
             InitializeComponent();
+            //clear all the inputs and results
         }
+
+        //when click on "clear": clear all the inputs and results
+
+        //when click on "search":
+            //validation:
+            //check if last name, email and phone are filled
+
+            //delcare variables to capture inputs, trim
+            //validation:
+            //email validation ("@" and "." with correct format)
+            //phone validation (10 digits without any other characters)
+
+            //run a query with the membership json file
+
+            //display result
     }
 }
