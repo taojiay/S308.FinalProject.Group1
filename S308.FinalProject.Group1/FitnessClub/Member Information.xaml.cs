@@ -30,12 +30,10 @@ namespace FitnessClub
 
         //when click on "search":
             //validation:
-            //check if last name, email and phone are filled
+            //check if last name, email or phone is filled
 
             //delcare variables to capture inputs, trim
-            //validation:
-            //email validation ("@" and "." with correct format)
-            //phone validation (10 digits without any other characters)
+
 
             //run a query with the membership json file
 
