@@ -7,16 +7,17 @@
         mc:Ignorable="d"
         Title="Membership Sales" Height="600" Width="800" Background="#FFFFFCE9">
     <Grid>
-        <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Width="113" TabIndex="8" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="43" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Width="113" TabIndex="7" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="43" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic" Click="btnReturnToMenu_Click"/>
         <Label x:Name="lblTitle" Content="Membership Sales" HorizontalAlignment="Left" Margin="214,35,0,0" VerticalAlignment="Top" Foreground="#FFF57921" FontFamily="Stencil" FontSize="36" FontWeight="Bold"/>
-        <Label x:Name="lblMembershipType" Content="Membership Type" HorizontalAlignment="Left" Margin="46,146,0,0" VerticalAlignment="Top" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" Foreground="#FF596772"/>
-        <ComboBox x:Name="cobMembershipType" HorizontalAlignment="Left" Margin="46,184,0,0" VerticalAlignment="Top" Width="255" TabIndex="0" SelectedIndex="1" BorderBrush="White" FontFamily="Sitka Display" FontSize="20" Foreground="#FF56656C">
+        <Label x:Name="lblMembershipType" Content="Membership Type" HorizontalAlignment="Left" Margin="46,164,0,0" VerticalAlignment="Top" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" Foreground="#FF596772"/>
+        <ComboBox x:Name="cboMembershipType" HorizontalAlignment="Left" Margin="46,202,0,0" VerticalAlignment="Top" Width="274" TabIndex="0" BorderBrush="White" FontFamily="Sitka Display" FontSize="20" Foreground="#FF56656C">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF0F0F0" Offset="0"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </ComboBox.Background>
+            <ComboBoxItem/>
             <ComboBoxItem Content="Individual 1 Month" HorizontalAlignment="Left" Width="118" Selected="ComboBoxItem_Selected"/>
             <ComboBoxItem Content="Individual 12 Month" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Two Person 1 Month" HorizontalAlignment="Left" Width="118"/>
@@ -24,28 +25,22 @@
             <ComboBoxItem Content="Family 1 Month" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Family 12 Month" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <Label x:Name="lblMembershipStartDate" Content="Membership Start Date" HorizontalAlignment="Left" Margin="46,222,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" Height="37" Width="211"/>
-        <Label x:Name="lblAdditionalFeatures" Content="Additional Features" HorizontalAlignment="Left" Margin="46,370,0,0" VerticalAlignment="Top" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" Background="{x:Null}" Foreground="#FF596770"/>
-        <DatePicker x:Name="dtpMembershipStartDate" HorizontalAlignment="Left" Margin="46,259,0,0" VerticalAlignment="Top" TabIndex="1" DisplayDate="2018-04-08" FontFamily="Sitka Display" FontSize="20" Foreground="#FF596770" Width="255" >
+        <Label x:Name="lblMembershipStartDate" Content="Membership Start Date" HorizontalAlignment="Left" Margin="46,252,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" Height="37" Width="211"/>
+        <Label x:Name="lblAdditionalFeatures" Content="Additional Features" HorizontalAlignment="Left" Margin="46,340,0,0" VerticalAlignment="Top" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" Background="{x:Null}" Foreground="#FF596770"/>
+        <DatePicker x:Name="dtpMembershipStartDate" HorizontalAlignment="Left" Margin="46,289,0,0" VerticalAlignment="Top" TabIndex="1" DisplayDate="2018-04-08" FontFamily="Sitka Display" FontSize="20" Foreground="#FF596770" Width="274" >
             <DatePicker.BlackoutDates>
                 <CalendarDateRange/>
             </DatePicker.BlackoutDates>
         </DatePicker>
-        <Button x:Name="btnSignUp" Content="Sign Up" HorizontalAlignment="Left" Margin="614,468,0,0" VerticalAlignment="Top" Width="109" TabIndex="6" Foreground="White" Background="#FFF57921" BorderBrush="White" FontFamily="Sitka Display" FontSize="20" FontStyle="Italic" FontWeight="Bold" Height="55"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="496,495,0,0" VerticalAlignment="Top" Width="83" TabIndex="7" Foreground="#FF596770" BorderBrush="#FF596770" FontFamily="Sitka display" FontSize="20" FontWeight="Bold" Height="28" Background="#FFEDEDED"/>
-        <CheckBox x:Name="ckbPersonalTrainingPlan" Content="Personal Training Plan" HorizontalAlignment="Left" Margin="63,405,0,0" VerticalAlignment="Top" TabIndex="3" IsChecked="True" FontSize="18" FontFamily="Sitka Display" Foreground="#FF596770"/>
-        <CheckBox x:Name="ckbLockerRental" Content="Locker Rental" HorizontalAlignment="Left" Margin="63,432,0,0" VerticalAlignment="Top" TabIndex="4" FontFamily="Sitka Display" FontSize="18" Foreground="#FF596770"/>
-        <Label x:Name="lblPricingQuote" Content="Pricing Quote" HorizontalAlignment="Left" Margin="334,143,0,0" VerticalAlignment="Top" Foreground="#FFF57921" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="lblMembershipEndDate" Content="Membership End Date" HorizontalAlignment="Left" Margin="46,297,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
-        <DatePicker x:Name="dtpMembershipEndDate" HorizontalAlignment="Left" Margin="46,332,0,0" VerticalAlignment="Top" TabIndex="2" Foreground="#FF596770" FontSize="20" FontFamily="Sitka Display" Width="255">
-            <DatePicker.BlackoutDates>
-                <CalendarDateRange/>
-            </DatePicker.BlackoutDates>
-        </DatePicker>
-        <Label x:Name="lblPricingQuoteResult" Content="Membership Type: Individual 12 Month&#xD;&#xA;Start Date: 4/8/2018&#xD;&#xA;End Date: 4/8/2019&#xD;&#xA;Membership Cost Per Month: $8.33&#xD;&#xA;Subtotal: $100.00&#xD;&#xA;Additional Features: Personal Training Plan&#xD;&#xA;Total: $160.00&#xD;&#xA;" HorizontalAlignment="Left" Margin="334,183,0,0" VerticalAlignment="Top" Width="389" Height="270" Background="White" FontFamily="Sitka Display" FontSize="20" Foreground="#FF596770" BorderBrush="#FFF57921" BorderThickness="5,0,0,0"/>
+        <Button x:Name="btnSignUp" Content="Sign Up" HorizontalAlignment="Left" Margin="614,458,0,0" VerticalAlignment="Top" Width="109" TabIndex="5" Foreground="White" Background="#FFF57921" BorderBrush="White" FontFamily="Sitka Display" FontSize="20" FontStyle="Italic" FontWeight="Bold" Height="55"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="496,485,0,0" VerticalAlignment="Top" Width="83" TabIndex="6" Foreground="#FF596770" BorderBrush="#FF596770" FontFamily="Sitka display" FontSize="20" FontWeight="Bold" Height="28" Background="#FFEDEDED" Click="btnClear_Click"/>
+        <CheckBox x:Name="ckbPersonalTrainingPlan" Content="Personal Training Plan" HorizontalAlignment="Left" Margin="63,375,0,0" VerticalAlignment="Top" TabIndex="2" FontSize="18" FontFamily="Sitka Display" Foreground="#FF596770"/>
+        <CheckBox x:Name="ckbLockerRental" Content="Locker Rental" HorizontalAlignment="Left" Margin="63,402,0,0" VerticalAlignment="Top" TabIndex="3" FontFamily="Sitka Display" FontSize="18" Foreground="#FF596770"/>
+        <Label x:Name="lblPricingQuote" Content="Pricing Quote" HorizontalAlignment="Left" Margin="348,143,0,0" VerticalAlignment="Top" Foreground="#FFF57921" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="lblPricingQuoteResult" Content="Membership Type: Individual 12 Month&#xD;&#xA;Start Date: 4/8/2018&#xD;&#xA;End Date: 4/8/2019&#xD;&#xA;Membership Cost Per Month: $8.33&#xD;&#xA;Subtotal: $100.00&#xD;&#xA;Additional Features: Personal Training Plan&#xD;&#xA;Total: $160.00&#xD;&#xA;" HorizontalAlignment="Left" Margin="353,183,0,0" VerticalAlignment="Top" Width="370" Height="240" Background="White" FontFamily="Sitka Display" FontSize="20" Foreground="#FF596770" BorderBrush="#FFF57921" BorderThickness="5,0,0,0"/>
         <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="logo.png" Margin="10,10,0,0" Stretch="Fill"/>
         <Label x:Name="lblInstruction" Content="Please enter the following information and click &quot;submit&quot; to get a price quote. &#xD;&#xA;After getting a quote, to continue sign up process, please press &quot;Sign Up&quot;. Otherwise, press &quot;Cancel&quot;." HorizontalAlignment="Left" Margin="115,84,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="16" FontStyle="Italic"/>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="215,488,0,0" VerticalAlignment="Top" Width="86" TabIndex="5" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="35" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="215,478,0,0" VerticalAlignment="Top" Width="86" TabIndex="4" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="35" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic" Click="btnSubmit_Click"/>
 
     </Grid>
 </Window>

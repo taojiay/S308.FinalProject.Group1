@@ -25,13 +25,36 @@ namespace FitnessClub
         {
             InitializeComponent();
         }
-
-        //link membership sales button with MembershipSales and close main menu
+         //link membership sales button with MembershipSales and close main menu
+        private void btnMembershipSales_Click(object sender, RoutedEventArgs e)
+        {
+            MembershipSales winSales = new MembershipSales();
+            winSales.Show();
+            this.Close();
+        }
 
         //link pricing management button with Pricing_Management and close main menu
+        private void btnPricingManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Pricing_Management winPricing = new Pricing_Management();
+            winPricing.Show();
+            this.Close();
+        }
 
         //link member information button with Member_Information and close main menu
+        private void btnMemberInformation_Click(object sender, RoutedEventArgs e)
+        {
+            Member_Information winInfo = new Member_Information();
+            winInfo.Show();
+            this.Close();
+        }
 
         //create exit button function
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }

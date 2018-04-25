@@ -24,19 +24,39 @@ namespace FitnessClub
         {
             InitializeComponent();
             //clear all the inputs and results
+            txtLastName.Text = "";
+            txtEmail.Text = "";
+            txtPhoneNumber.Text = "";
+            lblMemberInformationResult.Content = "";
+        }
+
+        //return to main menu method
+        private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu winMain = new MainMenu();
+            winMain.Show();
+            this.Close();
         }
 
         //when click on "clear": clear all the inputs and results
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtLastName.Text = "";
+            txtEmail.Text = "";
+            txtPhoneNumber.Text = "";
+        }
+
+        
 
         //when click on "search":
-            //validation:
-            //check if last name, email or phone is filled
+        //validation:
+        //check if last name, email or phone is filled
 
-            //delcare variables to capture inputs, trim
+        //delcare variables to capture inputs, trim
 
 
-            //run a query with the membership json file
+        //run a query with the membership json file
 
-            //display result
+        //display result
     }
 }
