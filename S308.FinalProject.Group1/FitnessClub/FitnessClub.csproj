@@ -95,6 +95,7 @@
     <Compile Include="Member Information.xaml.cs">
       <DependentUpon>Member Information.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Member.cs" />
     <Compile Include="MembershipInfoConfirmation.xaml.cs">
       <DependentUpon>MembershipInfoConfirmation.xaml</DependentUpon>
     </Compile>

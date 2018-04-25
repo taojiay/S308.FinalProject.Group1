@@ -18,7 +18,7 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
             <ComboBoxItem/>
-            <ComboBoxItem Content="Individual 1 Month" HorizontalAlignment="Left" Width="118" Selected="ComboBoxItem_Selected"/>
+            <ComboBoxItem Content="Individual 1 Month" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Individual 12 Month" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Two Person 1 Month" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Two Person 12 Month" HorizontalAlignment="Left" Width="118"/>

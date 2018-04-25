@@ -27,30 +27,30 @@
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="35" Margin="165,306,0,0" TextWrapping="Wrap" Text="taojiay@iu.edu" VerticalAlignment="Top" Width="176" TabIndex="3" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
         <TextBox x:Name="txtCreditCardNumber" HorizontalAlignment="Left" Height="32" Margin="91,451,0,0" TextWrapping="Wrap" Text="1111111111111111" VerticalAlignment="Top" Width="250" TabIndex="5" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
         <TextBox x:Name="txtAge" HorizontalAlignment="Left" Height="27" Margin="565,222,0,0" TextWrapping="Wrap" Text="22" VerticalAlignment="Top" Width="101" TabIndex="7" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
-        <TextBox x:Name="txtAge_Copy" HorizontalAlignment="Left" Height="29" Margin="594,262,0,0" TextWrapping="Wrap" Text="140" VerticalAlignment="Top" Width="72" TabIndex="8" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
+        <TextBox x:Name="txtWeight" HorizontalAlignment="Left" Height="29" Margin="594,262,0,0" TextWrapping="Wrap" Text="140" VerticalAlignment="Top" Width="72" TabIndex="8" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
         <Label x:Name="lbllbs" Content="lbs" HorizontalAlignment="Left" Margin="671,258,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20"/>
-        <ComboBox x:Name="cboGender" HorizontalAlignment="Left" Margin="506,174,0,0" VerticalAlignment="Top" Width="160" TabIndex="6" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" SelectedIndex="1">
+        <ComboBox x:Name="cboGender" HorizontalAlignment="Left" Margin="506,174,0,0" VerticalAlignment="Top" Width="160" TabIndex="6" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20">
             <ComboBoxItem Content="M"/>
             <ComboBoxItem Content="F"/>
             <ComboBoxItem Content="Not Provided"/>
         </ComboBox>
-        <ComboBox x:Name="cboCreditCardType" HorizontalAlignment="Left" Margin="91,381,0,0" VerticalAlignment="Top" Width="141" TabIndex="4" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" SelectedIndex="1">
+        <ComboBox x:Name="cboCreditCardType" HorizontalAlignment="Left" Margin="91,381,0,0" VerticalAlignment="Top" Width="141" TabIndex="4" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20">
             <ComboBoxItem Content="Visa"/>
             <ComboBoxItem Content="Master"/>
             <ComboBoxItem Content="Discover"/>
             <ComboBoxItem Content="American Express"/>
         </ComboBox>
-        <ComboBox x:Name="cboPersonalFitnessGoal" HorizontalAlignment="Left" Margin="428,339,0,0" VerticalAlignment="Top" Width="283" TabIndex="9" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Height="42" SelectedIndex="3">
+        <ComboBox x:Name="cboPersonalFitnessGoal" HorizontalAlignment="Left" Margin="428,339,0,0" VerticalAlignment="Top" Width="283" TabIndex="9" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" Height="42">
             <ComboBoxItem Content="Athletic Performance"/>
             <ComboBoxItem Content="Overall Health"/>
             <ComboBoxItem Content="Strength Training Weight Loss"/>
             <ComboBoxItem Content="Weight Management"/>
         </ComboBox>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="615,441,0,0" VerticalAlignment="Top" Width="96" TabIndex="10" Background="#FFF57921" Foreground="White" BorderBrush="White" FontSize="20" FontFamily="Sitka Display" FontWeight="Bold" FontStyle="Italic" Height="46"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="615,441,0,0" VerticalAlignment="Top" Width="96" TabIndex="10" Background="#FFF57921" Foreground="White" BorderBrush="White" FontSize="20" FontFamily="Sitka Display" FontWeight="Bold" FontStyle="Italic" Height="46" Click="btnSubmit_Click"/>
         <Label x:Name="lblSignupInstruction" Content="To prefill the personal information form from the pervious data, please enter the first name, &#xD;&#xA;last name, and phone number first. Then, click the &quot;Search&quot; button. Otherwise, fill in this form&#xD;&#xA; and click &quot;Submit&quot; to sign up a member. " HorizontalAlignment="Left" Margin="115,91,0,0" VerticalAlignment="Top" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="16" FontStyle="Italic" Width="617"/>
         <Button x:Name="btnSearchforPrefill" Content="Search" HorizontalAlignment="Left" Margin="490,452,0,0" VerticalAlignment="Top" Width="83" Background="White" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic" Height="35" TabIndex="11"/>
-        <Button x:Name="btnClear" Content="Clear All" HorizontalAlignment="Left" Margin="708,534,0,0" VerticalAlignment="Top" Width="75" BorderBrush="#FF8E8E8E" Foreground="#FF596770" FontSize="18" FontFamily="Sitka Display" TabIndex="12"/>
-        <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Width="113" TabIndex="13" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="43" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="btnClear" Content="Clear All" HorizontalAlignment="Left" Margin="708,534,0,0" VerticalAlignment="Top" Width="75" BorderBrush="#FF8E8E8E" Foreground="#FF596770" FontSize="18" FontFamily="Sitka Display" TabIndex="12" Click="btnClear_Click"/>
+        <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Width="113" TabIndex="13" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="43" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic" Click="btnReturnToMenu_Click"/>
         <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="logo1.png" Margin="10,10,0,0" Stretch="Fill"/>
         <Image x:Name="imgCard" HorizontalAlignment="Left" Height="32" Margin="253,381,0,0" VerticalAlignment="Top" Width="53" Source="images/mastercard_logo.png" Stretch="Fill"/>
 
