@@ -93,9 +93,9 @@ namespace FitnessClub
             //run a query with the membership json file
 
             memberSearch = memberList.Where(m =>
-                (m.LastName.StartsWith(strLastName)|| m.LastName == "") && 
-                (m.Email.StartsWith(strEmail) || m.Email == "") && 
-                (m.Phone.StartsWith(strPhoneNumber) || m.Phone == "")
+                (m.LastName.StartsWith(strLastName)|| strLastName == "") && 
+                (m.Email.StartsWith(strEmail) || strEmail == "") && 
+                (m.Phone.StartsWith(strPhoneNumber) || strPhoneNumber == "")
             ).ToList();
 
 
