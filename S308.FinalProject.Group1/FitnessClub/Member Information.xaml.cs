@@ -98,9 +98,18 @@ namespace FitnessClub
                 (m.Phone.StartsWith(strPhoneNumber) || m.Phone == "")
             ).ToList();
 
+
             //set the source of the datagrid and refresh
-            dtgResult.ItemsSource = memberSearch;
-            dtgResult.Items.Refresh();
+            if(memberSearch.Count()==0)
+            {
+                MessageBox.Show("No records are found.");
+            }
+            else
+            {
+                dtgResult.ItemsSource = memberSearch;
+                dtgResult.Items.Refresh();
+            }
+
 
 
 
