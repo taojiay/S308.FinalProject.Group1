@@ -31,12 +31,30 @@ namespace FitnessClub
             txtLastName.Text = "";
             txtEmail.Text = "";
             txtPhoneNumber.Text = "";
-            lblMemberInformationResult.Content = "";
+            dtgResult.Items.Clear();
 
-            //Initialize list of members
-            memberList = new List<Member>();
+
+            //load the membership list from the json file
+            memberList = GetDataSetFromFile();
         }
+        public List<Member> GetDataSetFromFile()
+        {
+            List<Member> lstMember = new List<Member>();
 
+            string strFilePath = @"../../../Data/Member.json";
+
+            try
+            {
+                string jsonData = File.ReadAllText(strFilePath);
+                lstMember = JsonConvert.DeserializeObject<List<Member>>(jsonData);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading Membership from file: " + ex.Message);
+            }
+
+            return lstMember;
+        }
         //return to main menu method
         private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -55,12 +73,41 @@ namespace FitnessClub
         //when click on "search":
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            string strFilePath = @"..\..\..\Data\Customers.json";
+            List<Member> memberSearch;
+
+            string strLastName = txtLastName.Text.Trim();
+            string strEmail = txtEmail.Text.Trim();
+            string strPhoneNumber = txtPhoneNumber.Text.Trim();
+
+            dtgResult.Items.Clear();
+
+            memberSearch = memberList.Where(m =>
+                m.LastName.StartsWith(strLastName) && 
+                m.Email.StartsWith(strEmail) && 
+                m.Phone.StartsWith(strPhoneNumber)
+            ).ToList();
+
+            foreach (Member m in memberSearch)
+            {
+                dtgResult.Items.Add(m.LastName);
+            }
+
+            lblNumFound.Content = "(" + pokemonSearch.Count.ToString() + ")";
+
+            //validation:
+            //check if last name, email or phone is filled
+
+
+
+
+
+
+
         }
 
 
 
-        
+
         //validation:
         //check if last name, email or phone is filled
 
