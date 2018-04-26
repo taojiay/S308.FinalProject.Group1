@@ -34,22 +34,35 @@ namespace FitnessClub
         }
 
         //when click on membership "submit" button:
-        //validation
+        //validation:
         
         private void btnMembershipSubmit_Click(object sender, RoutedEventArgs e)
         {
             //check if type and price the fields are filled or selected
+            if (cbxType.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a membership type.");
+                return;
+            }
             //check if the price can be parsed
+
         }
 
         //confirmation message
 
         //when click on features "submit" button: 
         //validation:
-        //check if type and price the fields are filled or selected
-        //check if the price can be parsed
-        private void btnFeaturesSubmit_Click(object sender, RoutedEventArgs e)
-        {
+      
+         private void btnFeaturesSubmit_Click(object sender, RoutedEventArgs e)
+        {  
+            //check if type and price the fields are filled or selected
+            if (cbxFeature.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please confirm that you don't want any additional features.");
+                return;
+            }
+            //check if the price can be parsed
+   
 
         }
 
