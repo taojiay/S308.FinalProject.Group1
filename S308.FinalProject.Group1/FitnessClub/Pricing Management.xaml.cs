@@ -24,22 +24,47 @@ namespace FitnessClub
         {
             InitializeComponent();
             //clear all the inputs
+
+            cbxType.SelectedIndex = -1;
+            txtPrice.Text = "";
+            ckbAvailable.IsChecked = false;
+            cbxFeature.SelectedIndex = -1;
+            txtFeaturePrice.Text = "";
+
         }
 
         //when click on membership "submit" button:
-            //validation
+        //validation
+        
+        private void btnMembershipSubmit_Click(object sender, RoutedEventArgs e)
+        {
             //check if type and price the fields are filled or selected
             //check if the price can be parsed
+        }
 
-            //confirmation message
+        //confirmation message
 
         //when click on features "submit" button: 
-            //validation:
-            //check if type and price the fields are filled or selected
-            //check if the price can be parsed
+        //validation:
+        //check if type and price the fields are filled or selected
+        //check if the price can be parsed
+        private void btnFeaturesSubmit_Click(object sender, RoutedEventArgs e)
+        {
 
-            //confirmation message
+        }
+
+        //confirmation message
 
         //create back to main meanu function, close current window
+
+        //return to main menu method
+        private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu winMain = new MainMenu();
+            winMain.Show();
+            this.Close();
+        }
+
+
     }
 }
