@@ -75,47 +75,37 @@ namespace FitnessClub
         {
             List<Member> memberSearch;
 
+            //validation:
+            //check if last name, email or phone is filled
+            if (txtLastName.Text == "" && txtEmail.Text == "" && txtPhoneNumber.Text == "")
+            {
+                MessageBox.Show("One of Last Name, Email and Phone Number is required.");
+                return;
+            }
+
+
+            //delcare variables to capture inputs, trim
             string strLastName = txtLastName.Text.Trim();
             string strEmail = txtEmail.Text.Trim();
             string strPhoneNumber = txtPhoneNumber.Text.Trim();
 
             dtgResult.Items.Clear();
+            //run a query with the membership json file
 
             memberSearch = memberList.Where(m =>
-                m.LastName.StartsWith(strLastName) && 
-                m.Email.StartsWith(strEmail) && 
-                m.Phone.StartsWith(strPhoneNumber)
+                (m.LastName.StartsWith(strLastName)|| m.LastName == "") && 
+                (m.Email.StartsWith(strEmail) || m.Email == "") && 
+                (m.Phone.StartsWith(strPhoneNumber) || m.Phone == "")
             ).ToList();
 
-            foreach (Member m in memberSearch)
-            {
-                dtgResult.Items.Add(m.LastName);
-            }
-
-            lblNumFound.Content = "(" + pokemonSearch.Count.ToString() + ")";
-
-            //validation:
-            //check if last name, email or phone is filled
-
-
-
-
+            //set the source of the datagrid and refresh
+            dtgResult.ItemsSource = memberSearch;
+            dtgResult.Items.Refresh();
 
 
 
         }
 
 
-
-
-        //validation:
-        //check if last name, email or phone is filled
-
-        //delcare variables to capture inputs, trim
-
-
-        //run a query with the membership json file
-
-        //display result
     }
 }
