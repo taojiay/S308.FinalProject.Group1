@@ -1,4 +1,4 @@
 [
-{"AdditionalFeature":"Personal Training Plan","Price":"5.00"},
-{"AdditionalFeature":"Locker Rental","Price":"1.00"}
+{"FeaturesType":"Personal Training Plan","Price":"5.00"},
+{"FeaturesType":"Locker Rental","Price":"1.00"}
 ]

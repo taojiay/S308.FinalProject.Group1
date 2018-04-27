@@ -16,8 +16,8 @@ namespace FitnessClub
         public string CreditCardType { get; set; }
         public string CreditCardNumber { get; set; }
         public string Gender { get; set; }
-        public int Age { get; set; }
-        public int Weight { get; set; }
+        public byte Age { get; set; }
+        public short Weight { get; set; }
         public string PersonalFitnessGoal { get; set; }
 
         //set class constructor
@@ -30,10 +30,6 @@ namespace FitnessClub
             CreditCardType = "";
             CreditCardNumber = "";
             Gender = "";
-            Age = 0;
-            Weight = 0;
-            PersonalFitnessGoal = "";
-
         }
 
         //method: add member

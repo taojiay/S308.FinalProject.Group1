@@ -23,19 +23,38 @@ namespace FitnessClub
     public partial class MembershipSales : Window
     {
         List<MembershipPrice> MembershipPriceIndex;
+        List<FeaturesPrice> FeaturesPriceIndex;
 
         public MembershipSales()
         {
             InitializeComponent();
 
+            //clear all the inputs and results
+            cboMembershipType.SelectedIndex = -1;
+            dtpMembershipStartDate.SelectedDate = null;
+            ckbPersonalTrainingPlan.IsChecked = false;
+            ckbLockerRental.IsChecked = false;
+            lblPricingQuoteResult.Content = "";
+
+
             //load the membership price list from  the json file
-            MembershipPriceIndex = GetDataFromFile();
+            MembershipPriceIndex = GetMembershipPriceDataFromFile();
+            FeaturesPriceIndex = GetFeaturesPriceDataFromFile();
 
             //only the membership type is available will be displayed in the drop-down list
+            foreach (var a in MembershipPriceIndex)
+                if (a.Availability == true)
+                {
+                    ComboBoxItem cbiItem = new ComboBoxItem();
+                    cbiItem.Content = a.MembershipType;
+                    cboMembershipType.Items.Add(cbiItem);
+                }
+                    
+
         }
 
-        //method: get data from json file
-        public List<MembershipPrice> GetDataFromFile()
+        //method: get membership price data from json file
+        public List<MembershipPrice> GetMembershipPriceDataFromFile()
         {
             List<MembershipPrice> MembershipPricing = new List<MembershipPrice>();
 
@@ -52,6 +71,26 @@ namespace FitnessClub
             }
 
             return MembershipPricing;
+        }
+
+        //method: get additional features price data from json file
+        public List<FeaturesPrice> GetFeaturesPriceDataFromFile()
+        {
+            List<FeaturesPrice> FeaturesPricing = new List<FeaturesPrice>();
+
+            string strFilePath = @"../../../Data/AdditionalFeaturePricing.json";
+
+            try
+            {
+                string jsonData = File.ReadAllText(strFilePath);
+                FeaturesPricing = JsonConvert.DeserializeObject<List<FeaturesPrice>>(jsonData);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading Membership Price from file: " + ex.Message);
+            }
+
+            return FeaturesPricing;
         }
 
 
@@ -97,9 +136,10 @@ namespace FitnessClub
 
             //declare variables to capture input
             DateTime datStartDate = (DateTime)dtpMembershipStartDate.SelectedDate;
-            DateTime datToday = DateTime.Now;
+            DateTime datToday = DateTime.Today;
             ComboBoxItem cbiSelectedMembershipType = (ComboBoxItem)cboMembershipType.SelectedItem;
             string strSelectedMembershipType = cbiSelectedMembershipType.Content.ToString();
+            
 
             //check if the start date is not in the past, if not error message display
             if (datStartDate < datToday)
@@ -107,39 +147,97 @@ namespace FitnessClub
                 MessageBox.Show("Please select a start date that is not in the past.");
                 return;
             }
+
+
+            //determine whether the selected type is one month or 12 month to calculate the end date
+            int intMonth;
+            DateTime datEndDate;
+            if (strSelectedMembershipType.Contains("12 Month"))
+                intMonth = 12;
+            else
+                intMonth = 1;
+
+            datEndDate = datStartDate.AddMonths(intMonth);
+
+            //find the membership price
+            decimal decMembershipPrice = 0;
+
+            foreach (var i in MembershipPriceIndex)
+                if (i.MembershipType == strSelectedMembershipType)
+                    decMembershipPrice = i.Price;
+
+            //calculate membership cost per month (membershipprice/month)
+            decimal decMonthlyMembershipPrice;
+            decMonthlyMembershipPrice = decMembershipPrice / Convert.ToDecimal(intMonth);
             
+
+            //retrieve monthly price for each additional feature
+            string strPersonalTrainingPlan = "Personal Training Plan";
+            string strLockerRental = "Locker Rental";
+            decimal decMonthlyPersonalTrainingPlan = 0;
+            decimal decMonthlyLockerRental = 0;
+
+            foreach (var x in FeaturesPriceIndex)
+                if (x.FeaturesType == strPersonalTrainingPlan)
+                    decMonthlyPersonalTrainingPlan = x.Price;
+
+            foreach (var y in FeaturesPriceIndex)
+                if (y.FeaturesType == strLockerRental)
+                    decMonthlyLockerRental = y.Price;
+
+            //declare variables to indicate if the additional features are checked and calculate the additional feature price per month;
+            decimal decMonthlyFeaturesPrice;
+            decimal decTotalFeaturesPrice;
+            string strFeatures;
+
+
+            if (ckbPersonalTrainingPlan.IsChecked == true && ckbLockerRental.IsChecked == true)
+            { 
+                decMonthlyFeaturesPrice = decMonthlyLockerRental + decMonthlyPersonalTrainingPlan;
+                strFeatures = strPersonalTrainingPlan + Environment.NewLine + strLockerRental.PadLeft(48);
+            }
+            else if (ckbPersonalTrainingPlan.IsChecked == true && ckbLockerRental.IsChecked == false)
+            {
+                decMonthlyFeaturesPrice = decMonthlyPersonalTrainingPlan;
+                strFeatures = strPersonalTrainingPlan;
+            } 
+            else if (ckbPersonalTrainingPlan.IsChecked == false && ckbLockerRental.IsChecked == true)
+            {
+                decMonthlyFeaturesPrice = decMonthlyLockerRental;
+                strFeatures = strLockerRental;
+            }
+            else
+            {
+                decMonthlyFeaturesPrice = 0;
+                strFeatures = "none";
+            }
+                
+            decTotalFeaturesPrice = decMonthlyFeaturesPrice * Convert.ToDecimal(intMonth);
+
+            //calculate total price
+            decimal decTotalPrice;
+            decTotalPrice = decMembershipPrice + decTotalFeaturesPrice;
+
+            //Display the Result 
+            string strQuote;
+            strQuote = "Membership Type: " + strSelectedMembershipType + Environment.NewLine
+                + "Start Date: " + datStartDate.ToShortDateString() + Environment.NewLine
+                + "End Date: " + datEndDate.ToShortDateString() + Environment.NewLine
+                + "Membership Cost Per Month: " + decMonthlyMembershipPrice.ToString("C", new System.Globalization.CultureInfo("en-US")) + Environment.NewLine
+                + "Subtotal: " + decMembershipPrice.ToString("C", new System.Globalization.CultureInfo("en-US")) + Environment.NewLine
+                + "Additional Features: " + strFeatures + Environment.NewLine
+                + "Total: " + decTotalPrice.ToString("C", new System.Globalization.CultureInfo("en-US"));
+
+            lblPricingQuoteResult.Content = strQuote;
             
         }
 
-        
-
-        
-
-
-        //declare variables
-        //capture of all the inputs
-
-        //calculate the month selected 
-
-        //validation:
-        //check if 12 month plan is selected, make sure the selected month is 12, 24, 36, etc. Otherwise, error message display
-
-        //retrieve the pricing information (membership type + additional feature) from the json file
-
-        //calculate the subtotal: price * month(or how many 12 month)
-
-        //calculate additional feature: price * month
-
-        //calculate total 
-
-        //display result when click on submit
-
-        //create cancel button function: back to main menu and close current window
-
-        //Only after the quote preview can click on sign up 
-        //link sign up button with MembershipSignup and close current window
-
-
-
+        //when click on "Sign up" change to screen to "MembershipSignup"
+        private void btnSignUp_Click(object sender, RoutedEventArgs e)
+        {
+            MembershipSignup winMembershipSignup = new MembershipSignup();
+            winMembershipSignup.Show();
+            this.Close();
+        }
     }
 }
