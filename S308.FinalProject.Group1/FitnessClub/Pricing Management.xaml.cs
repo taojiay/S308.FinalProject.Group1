@@ -36,7 +36,7 @@ namespace FitnessClub
             txtFeaturePrice.Text = "";
 
         }
-
+        /*
         //when click on membership "submit" button:
         //validation:
         
@@ -108,6 +108,6 @@ namespace FitnessClub
             this.Close();
         }
 
-
+    */
     }
 }

@@ -137,9 +137,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="logo.png" />
   </ItemGroup>
@@ -147,13 +145,12 @@
     <Resource Include="logo1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mastercard_logo.png" />
+    <Resource Include="images\mastercard_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mastercard_logo1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="mastercard_logo2.png" />
+    <Resource Include="images\american_express_logo.png" />
+    <Resource Include="images\discover_logo.png" />
+    <Resource Include="images\visa_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

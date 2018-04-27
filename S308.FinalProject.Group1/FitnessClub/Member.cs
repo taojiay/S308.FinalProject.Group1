@@ -32,8 +32,8 @@ namespace FitnessClub
             Gender = "";
         }
 
-        //method: add member
-        public Member(string firstName, string lastName, string phone, string email, string creditcardType, string creditcardNumber, string gender)
+        //method: member
+        public Member(string firstName, string lastName, string phone, string email, string creditcardType, string creditcardNumber, string gender, byte age, short weight, string personalfitnessGoal)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -41,7 +41,11 @@ namespace FitnessClub
             Email = email;
             CreditCardType = creditcardType;
             CreditCardNumber = creditcardNumber;
-            Gender = gender; 
+            Gender = gender;
+            Age = age;
+            Weight = weight;
+            PersonalFitnessGoal = personalfitnessGoal;
         }
+
     }
 }

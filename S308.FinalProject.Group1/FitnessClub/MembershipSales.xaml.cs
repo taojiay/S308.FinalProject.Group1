@@ -24,6 +24,7 @@ namespace FitnessClub
     {
         List<MembershipPrice> MembershipPriceIndex;
         List<FeaturesPrice> FeaturesPriceIndex;
+        
 
         public MembershipSales()
         {
@@ -35,6 +36,7 @@ namespace FitnessClub
             ckbPersonalTrainingPlan.IsChecked = false;
             ckbLockerRental.IsChecked = false;
             lblPricingQuoteResult.Content = "";
+
 
 
             //load the membership price list from  the json file
@@ -229,15 +231,27 @@ namespace FitnessClub
                 + "Total: " + decTotalPrice.ToString("C", new System.Globalization.CultureInfo("en-US"));
 
             lblPricingQuoteResult.Content = strQuote;
-            
-        }
 
+            
+
+        }
         //when click on "Sign up" change to screen to "MembershipSignup"
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
-            MembershipSignup winMembershipSignup = new MembershipSignup();
-            winMembershipSignup.Show();
-            this.Close();
+            if(lblPricingQuoteResult.Content.ToString() == "")
+            {
+                MessageBox.Show("Please get a quote before signing up.");
+                return;
+            }
+            else
+            {
+                MembershipSignup winMembershipSignup = new MembershipSignup();
+                winMembershipSignup.Show();
+                this.Close();
+            }
         }
+
+        
+
     }
 }
