@@ -96,7 +96,7 @@ namespace FitnessClub
             }
            
             //confirmation message
-            MessageBox.Show("Price of membership plan (membership plan type...???) has been changed to:" + txtPrice.Text);
+            MessageBox.Show("Price of membership plan "+ cbiSelectedMembershipType.Content + " has been changed to:" + txtPrice.Text);
             
             //check if the price can be parsed
             //????
@@ -156,7 +156,7 @@ namespace FitnessClub
             }
            
             //confirmation message
-            MessageBox.Show("Price of Feature (feature name....???) has been changed to:" + txtFeaturePrice.Text);
+            MessageBox.Show("Price of Feature "+cbiSelectedFeatureType.Content+" has been changed to:" + txtFeaturePrice.Text);
            
             //check if the price can be parsed
             //???
