@@ -23,7 +23,7 @@ namespace FitnessClub
     public partial class Pricing_Management : Window
  {
          List<MembershipPrice> MembershipPriceIndex;
-         List<FeaturePrice> FeaturePriceIndex;
+         List<FeaturesPrice> FeaturePriceIndex;
    
         public Pricing_Management()
         {

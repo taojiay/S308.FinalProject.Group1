@@ -24,7 +24,15 @@ namespace FitnessClub
     {
         List<MembershipPrice> MembershipPriceIndex;
         List<FeaturesPrice> FeaturesPriceIndex;
-        
+
+        //declare variables to pass on the information to next screen
+        string strmembershiptype;
+        DateTime datstartdate;
+        DateTime datenddate;
+        decimal decmembershipcostpermonth;
+        decimal decsubtotal;
+        string stradditionalfeatures;
+        decimal dectotal;
 
         public MembershipSales()
         {
@@ -232,6 +240,15 @@ namespace FitnessClub
 
             lblPricingQuoteResult.Content = strQuote;
 
+
+            //pass the info to variables
+            strmembershiptype = strSelectedMembershipType;
+            datstartdate = datStartDate;
+            datenddate = datEndDate;
+            decmembershipcostpermonth = decMonthlyMembershipPrice;
+            decsubtotal = decMembershipPrice;
+            stradditionalfeatures = strFeatures;
+            dectotal = decTotalPrice;
             
 
         }
@@ -245,6 +262,10 @@ namespace FitnessClub
             }
             else
             {
+                //create some info to send to the next window
+                Member QuoteInfo = new Member(strmembershiptype, datstartdate, datenddate, decmembershipcostpermonth, decsubtotal, stradditionalfeatures, dectotal);
+
+                //open next window and close this window
                 MembershipSignup winMembershipSignup = new MembershipSignup();
                 winMembershipSignup.Show();
                 this.Close();

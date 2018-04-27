@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace FitnessClub
 {
@@ -20,13 +22,15 @@ namespace FitnessClub
     /// </summary>
     public partial class MembershipSignup : Window
     {
+        public Member InfoFromPrevWindow { get; set; }
+
         List<Member> memberList;
+
+
+
         public MembershipSignup()
         {
             InitializeComponent();
-
-            //instantiate a list to hold members
-            memberList = new List<Member>();
 
             //clear all the inputs
             txtFirstName.Text = "";
@@ -42,6 +46,25 @@ namespace FitnessClub
 
             //hide image
             imgCard.Visibility = Visibility.Hidden;
+
+            //instantiate a list to hold members
+            memberList = new List<Member>();
+
+            //default blank member info for the default constructor
+            InfoFromPrevWindow = new Member();
+        }
+
+        public MembershipSignup(Member QuoteInfo)
+        {
+            InitializeComponent();
+
+            //assigning the property from the member class that was passed into this overridden constructor
+            InfoFromPrevWindow = QuoteInfo;
+
+
+
+
+           
         }
 
         //create main menu button function: link with main meanu and close current file
@@ -132,7 +155,7 @@ namespace FitnessClub
             ValidateCreditCard(strSelectedCardType, txtCreditCardNumber.Text.Trim());
 
             //validate age
-            byte bytAge;
+            byte bytAge = 0;
             if (txtAge.Text.Trim() != "")
             {
                 if (!byte.TryParse(txtAge.Text.Trim(), out bytAge))
@@ -147,7 +170,7 @@ namespace FitnessClub
             }
 
             //validate weight, capture inputs
-            short shtWeight;
+            short shtWeight = 0;
             if (txtWeight.Text.Trim() !="")
             {
                 if(!Int16.TryParse(txtWeight.Text.Trim(), out shtWeight))
@@ -181,36 +204,33 @@ namespace FitnessClub
 
             //add new member to the list
             Member newMember;
-            newMember = new Member(strFirstName, strLastName, strPhone, strEmail, strSelectedCardType, strCreditCardNumber,strGender, )
+            newMember = new Member(InfoFromPrevWindow, strFirstName, strLastName, strPhone, strEmail, strSelectedCardType, strCreditCardNumber, strGender, bytAge, shtWeight, strPersonalFitnessGoal);
+
+            memberList.Add(newMember);
 
             //add to file
-            bool bolStatus;
             string strFilePath = @"..\..\..\Data\Member.json";
 
+            try
+            {
+                //serialize the new list of member to json format
+                string jsonData = JsonConvert.SerializeObject(memberList);
 
-            bolStatus = 
+                //use System.IO.File to write over the file with the json data
+                System.IO.File.WriteAllText(strFilePath, jsonData);
 
-            if(bolStatus)
-                {
-                    try
-                    {
-                        //serialize the new list of member to json format
-                        string jsonData = JsonConvert.SerializeObject(memberList);
+                MessageBox.Show("Member is added!");
 
-                        //use System.IO.File to write over the file with the json data
-                        System.IO.File.WriteAllText(strFilePath, jsonData);
-
-                        MessageBox.Show("Member is added!");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error in export process: " + ex.Message);
-                    }
-                }
-            
-
+                MembershipInfoConfirmation winConfirmation = new MembershipInfoConfirmation();
+                winConfirmation.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in export process: " + ex.Message);
+            }
         }
-
+            
 
         
         //create method: validate phone number (only 10 digits)
@@ -433,21 +453,6 @@ namespace FitnessClub
         //run query for the membership information json file and capture values
         //fill the result in the form
 
-        //when click "submit":
-
-
-        //declare variables to capture inputs, trim
-        //validation:
-        //check if the phone number is 10 digits without other characters
-        //check if the email has "@" and "." and with the correct format
-        //check if the credit card is validate
-        //check if the credit card matches the credit card type
-        //check if the age is between 0 and 100
-        //check if the weight is between 0 and 500
-
-        //store the data into json file
-
-        //link to MembershipInfo Confirmation 
 
 
 
