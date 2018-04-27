@@ -51,7 +51,7 @@
         <Button x:Name="btnSearchforPrefill" Content="Search" HorizontalAlignment="Left" Margin="490,452,0,0" VerticalAlignment="Top" Width="83" Background="White" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic" Height="35" TabIndex="11"/>
         <Button x:Name="btnClear" Content="Clear All" HorizontalAlignment="Left" Margin="708,534,0,0" VerticalAlignment="Top" Width="75" BorderBrush="#FF8E8E8E" Foreground="#FF596770" FontSize="18" FontFamily="Sitka Display" TabIndex="12" Click="btnClear_Click"/>
         <Button x:Name="btnReturnToMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="666,10,0,0" VerticalAlignment="Top" Width="113" TabIndex="13" Background="#FF596770" BorderBrush="#FFFFFDFD" Foreground="White" Height="43" FontFamily="Sitka Display" FontSize="20" FontWeight="Bold" FontStyle="Italic" Click="btnReturnToMenu_Click"/>
-        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="logo1.png" Margin="10,10,0,0" Stretch="Fill"/>
+        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="10,10,0,0" Stretch="Fill" Source="images/logo.png"/>
         <Image x:Name="imgCard" HorizontalAlignment="Left" Height="32" Margin="288,451,0,0" VerticalAlignment="Top" Width="53" Stretch="Fill" Source="images/mastercard_logo.png"/>
 
     </Grid>

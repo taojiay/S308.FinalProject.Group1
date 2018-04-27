@@ -139,10 +139,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="logo1.png" />
+    <Resource Include="images\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\mastercard_logo.png" />

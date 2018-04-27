@@ -21,28 +21,30 @@ namespace FitnessClub
     /// Interaction logic for Pricing_Management.xaml
     /// </summary>
     public partial class Pricing_Management : Window
- {
-         List<MembershipPrice> MembershipPriceIndex;
-         List<FeaturesPrice> FeaturePriceIndex;
-   
+    {
+        List<MembershipPrice> MembershipPriceIndex;
+        List<FeaturesPrice> FeaturePriceIndex;
+
         public Pricing_Management()
         {
             InitializeComponent();
-            //clear all the inputs
 
+            //clear all the inputs
             cbxType.SelectedIndex = -1;
             txtPrice.Text = "";
-            ckbAvailable.IsChecked = true;
+            ckbAvailable.IsChecked = false;
             cbxFeature.SelectedIndex = -1;
             txtFeaturePrice.Text = "";
 
+            //load the membership price list from  the json file
             MembershipPriceIndex = GetMembershipPriceDataFromFile();
             FeaturePriceIndex = GetFeaturesPriceDataFromFile();
-            
+
         }
 
+
         //method: get membership price data from json file
-        public List<MembershipPrice> GetMembershipPriceDataFromFile()
+        private List<MembershipPrice> GetMembershipPriceDataFromFile()
         {
             List<MembershipPrice> MembershipPricing = new List<MembershipPrice>();
 
@@ -62,7 +64,7 @@ namespace FitnessClub
         }
 
         //method: get additional features price data from json file
-        public List<FeaturesPrice> GetFeaturesPriceDataFromFile()
+        private List<FeaturesPrice> GetFeaturesPriceDataFromFile()
         {
             List<FeaturesPrice> FeaturesPricing = new List<FeaturesPrice>();
 
@@ -85,14 +87,11 @@ namespace FitnessClub
         //validation:
         private void btnMembershipSubmit_Click(object sender, RoutedEventArgs e)
         {
+            string strFilePath = @"../../../Data/MembershipPricing.json";
 
-          
             decimal decPrice;
             bool bolAvailability;
-
-          
             
-      
 
             //check if type and price fields are filled or selected
             if (cbxType.SelectedIndex == -1)
@@ -128,47 +127,34 @@ namespace FitnessClub
 
                 }
 
-         
 
-            //instantiate a new membership plan price from the input and add it to the list
-            MembershipPrice membershippriceNew = new MembershipPrice(strSelectedMembershipType, decPrice, bolAvailability);
-            MembershipPriceIndex.Add(membershippriceNew);
+            try
+            {
+                //serialize the new list of customer to json format
+                string jsonData = JsonConvert.SerializeObject(MembershipPriceIndex);
 
-           
-            //confirmation message
-            MessageBox.Show("Price of membership plan "+ cbiSelectedMembershipType.Content + " has been changed to:" + txtPrice.Text);
-            
+                //use System.IO.File to write over the file with the json data
+                System.IO.File.WriteAllText(strFilePath, jsonData);
+
+                MessageBox.Show("Price of membership plan " + cbiSelectedMembershipType.Content + " has been changed to: $" + txtPrice.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in export process: " + ex.Message);
+            }
         }
 
-        //confirmation message
+        
 
         //when click on features "submit" button: 
         //validation:
       
          private void btnFeaturesSubmit_Click(object sender, RoutedEventArgs e)
         {
-            string strFilePath = @"..\..\..\Data\FeaturePrice.json";
+            string strFilePath = @"..\..\..\Data\AdditionalFeaturePricing.json";
             decimal decFeaturePrice;
 
-            //import original feature price file
-            try
-            {
-                //use System.IO.File to read the entire data file
-                string jsonData = File.ReadAllText(strFilePath);
-
-                //serialize the json data to a list of campuses
-                FeaturePriceIndex = JsonConvert.DeserializeObject<List<FeaturesPrice>>(jsonData);
-
-                if (FeaturePriceIndex.Count >= 0)
-                    MessageBox.Show(FeaturePriceIndex.Count + " Features have been imported.");
-                else
-                    MessageBox.Show("No feature has been imported. Please check your file.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error in import process: " + ex.Message);
-            }
-
+  
 
             //check if type and price the fields are filled or selected
 
@@ -189,12 +175,15 @@ namespace FitnessClub
 
             decFeaturePrice = Convert.ToDecimal(txtFeaturePrice.Text.Trim());
 
-            //instantiate a new feature price from the input and add it to the list
-            FeaturesPrice featurepriceNew = new FeaturesPrice(strSelectedFeatureType, decFeaturePrice);
-            FeaturePriceIndex.Add(featurepriceNew);
 
-            //import new feature price
-            try
+            //rewrite feature price
+            foreach (var y in FeaturePriceIndex)
+                if (y.FeaturesType == strSelectedFeatureType)
+                    y.Price = decFeaturePrice;
+
+
+                    //import new feature price
+                    try
             {
                 //serialize the new feature price to json format
                 string jsonData = JsonConvert.SerializeObject(FeaturePriceIndex);
@@ -202,7 +191,7 @@ namespace FitnessClub
                 //use System.IO.File to write over the file with the json data
                 System.IO.File.WriteAllText(strFilePath, jsonData);
 
-                MessageBox.Show("New feature price has been changed.");
+                MessageBox.Show("Price of Feature " + cbiSelectedFeatureType.Content + " has been changed to: $" + txtFeaturePrice.Text);
 
             }
             
@@ -211,19 +200,13 @@ namespace FitnessClub
             {
                 MessageBox.Show("Error in export process:" + ex.Message);
             }
-           
-            //confirmation message
-            MessageBox.Show("Price of Feature "+cbiSelectedFeatureType.Content+" has been changed to:" + txtFeaturePrice.Text);
-           
-            //check if the price can be parsed
-            //???
+  
+
 
 
         }
 
         
-
-        //create back to main meanu function, close current window
 
         //return to main menu method
         private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)
