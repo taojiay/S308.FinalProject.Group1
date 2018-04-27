@@ -44,6 +44,9 @@ namespace FitnessClub
             CreditCardType = "";
             CreditCardNumber = "";
             Gender = "";
+            Age = 0;
+            Weight = 0;
+            PersonalFitnessGoal = "";
         }
 
         //method: add member info
