@@ -88,7 +88,7 @@ namespace FitnessClub
             string strLastName = txtLastName.Text.Trim();
             string strEmail = txtEmail.Text.Trim();
             string strPhoneNumber = txtPhoneNumber.Text.Trim();
-
+            //clean the datagrid
             dtgResult.ItemsSource = null;
             //run a query with the membership json file
 
@@ -98,9 +98,27 @@ namespace FitnessClub
                 (m.Phone.StartsWith(strPhoneNumber) || strPhoneNumber == "")
             ).ToList();
 
+            //format the date and price
+            foreach(var m in memberSearch)
+            {
+                m.StartDate.ToShortDateString();
+                m.EndDate.ToShortDateString();
+                m.MembershipCostPerMonth = Math.Round(m.MembershipCostPerMonth, 2);
 
+            }
+            //Advanced option: display records that expire soon in a different color
+            foreach (DataGridViewRow row in vendorsDataGridView.Rows)
+            {
+                var now = DateTime.Now;
+                var expirationDate = DateTime.Parse(m.EndDate.ToShortDateString());
+                var sevenDayBefore = expirationDate.AddDays(-7);
+                if (now > sevenDayBefore && now < expirationDate)
+                {
+                    Row
+                    }
+            }
             //set the source of the datagrid and refresh
-            if(memberSearch.Count()==0)
+            if (memberSearch.Count()==0)
             {
                 MessageBox.Show("No records are found.");
             }
