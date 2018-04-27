@@ -31,7 +31,7 @@ namespace FitnessClub
             txtLastName.Text = "";
             txtEmail.Text = "";
             txtPhoneNumber.Text = "";
-            dtgResult.Items.Clear();
+            dtgResult.ItemsSource = null;
 
 
             //load the membership list from the json file
@@ -89,7 +89,7 @@ namespace FitnessClub
             string strEmail = txtEmail.Text.Trim();
             string strPhoneNumber = txtPhoneNumber.Text.Trim();
 
-            dtgResult.Items.Clear();
+            dtgResult.ItemsSource = null;
             //run a query with the membership json file
 
             memberSearch = memberList.Where(m =>
