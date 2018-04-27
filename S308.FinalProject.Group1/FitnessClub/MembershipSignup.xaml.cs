@@ -25,14 +25,14 @@ namespace FitnessClub
         public Member InfoFromPrevWindow { get; set; }
 
         List<Member> memberList;
-
+        Member MemberSummary;
 
 
         public MembershipSignup()
         {
             InitializeComponent();
-
            
+
             //default blank member info for the default constructor
             InfoFromPrevWindow = new Member();
         }
@@ -113,157 +113,69 @@ namespace FitnessClub
             imgCard.Visibility = Visibility.Hidden;
         }
 
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
-        {          
+        private bool addMember(string firstname, string lastname, string phone, string email, object selectedcardtype, string cardnumber, object selectedgender, string age, string weight, object selectedgoal)
+        {
+            //Define variable
+            Member newMember;
+
+            //trim inputs
+            firstname = firstname.Trim();
+            lastname = lastname.Trim();
+            phone = phone.Trim();
+            email = email.Trim();
+            cardnumber = cardnumber.Trim();
+            age = age.Trim();
+            weight = weight.Trim();
 
             //validation:
             //check if first name, last name, credit card type, credit card number, phone, email, gender are selected, if not error message display
-            if (txtFirstName.Text.Trim() == "")
+            if (firstname == "")
             {
                 MessageBox.Show("First name is required.");
-                return;
+                return false;
             }
 
-            if (txtLastName.Text.Trim() == "")
+            if (lastname == "")
             {
                 MessageBox.Show("Last name is required.");
-                return;
+                return false;
             }
 
 
-            if (txtPhone.Text.Trim() == "")
+            if (phone == "")
             {
                 MessageBox.Show("Phone is required.");
-                return;
+                return false;
             }
 
-            if (txtEmail.Text.Trim() == "")
+            if (email == "")
             {
                 MessageBox.Show("Email is required.");
-                return;
+                return false;
             }
 
 
-            if (cboCreditCardType.SelectedIndex == -1)
+            if (selectedcardtype == null)
             {
                 MessageBox.Show("Credit card type is required.");
-                return;
+                return false;
             }
 
-            if (txtCreditCardNumber.Text.Trim() == "")
+            if (cardnumber == "")
             {
                 MessageBox.Show("Credit card number is required.");
-                return;
+                return false;
             }
 
 
 
-            if (cboGender.SelectedIndex == -1)
+            if (selectedgender == null)
             {
                 MessageBox.Show("Please select an appropriate gender input.");
-                return;
+                return false;
             }
 
             //validate phone
-            ValidatePhone(txtPhone.Text.Trim());
-
-            //validate email
-            ValidateEmail(txtEmail.Text.Trim());
-
-            //validate credit card number and type
-            ComboBoxItem cbiSelectedCardType = (ComboBoxItem)cboCreditCardType.SelectedItem;
-            string strSelectedCardType = cbiSelectedCardType.Content.ToString();
-
-            ValidateCreditCard(strSelectedCardType, txtCreditCardNumber.Text.Trim());
-
-            //validate age
-            byte bytAge = 0;
-            if (txtAge.Text.Trim() != "")
-            {
-                if (!byte.TryParse(txtAge.Text.Trim(), out bytAge))
-                {
-                    MessageBox.Show("Please enter a valid age.");
-                    return;
-                }
-                else
-                {
-                    bytAge = Convert.ToByte(txtAge.Text.Trim());
-                }
-            }
-
-            //validate weight, capture inputs
-            short shtWeight = 0;
-            if (txtWeight.Text.Trim() !="")
-            {
-                if(!Int16.TryParse(txtWeight.Text.Trim(), out shtWeight))
-                {
-                    MessageBox.Show("Please enter a valid weight.");
-                    return;
-                }
-                else
-                {
-                    shtWeight = Convert.ToInt16(txtWeight.Text.Trim());
-                }
-            }
-
-
-            //declare variables and capture inputs (besides credit card type, age, weight)
-            string strFirstName = txtFirstName.Text.Trim();
-            string strLastName = txtLastName.Text.Trim();
-            string strCreditCardNumber = txtCreditCardNumber.Text.Trim();
-            string strPhone = txtPhone.Text.Trim();
-            string strEmail = txtEmail.Text.Trim();
-
-            ComboBoxItem cbiSelectedGender = (ComboBoxItem)cboGender.SelectedItem;
-            string strGender = cbiSelectedGender.Content.ToString();
-
-            string strPersonalFitnessGoal = "";
-            if(cboPersonalFitnessGoal.SelectedIndex != -1)
-            {
-                ComboBoxItem cbiSelectedPersonalGoal = (ComboBoxItem)cboPersonalFitnessGoal.SelectedItem;
-                strPersonalFitnessGoal = cbiSelectedPersonalGoal.Content.ToString();
-            }
-
-            //add new member to the list
-            Member newMember;
-            newMember = new Member(InfoFromPrevWindow, strFirstName, strLastName, strPhone, strEmail, strSelectedCardType, strCreditCardNumber, strGender, bytAge, shtWeight, strPersonalFitnessGoal);
-
-            memberList.Add(newMember);
-
-            //add to file
-            string strFilePath = @"..\..\..\Data\Member.json";
-
-            try
-            {
-                //serialize the new list of member to json format
-                string jsonData = JsonConvert.SerializeObject(memberList);
-
-                //use System.IO.File to write over the file with the json data
-                System.IO.File.WriteAllText(strFilePath, jsonData);
-
-                MessageBox.Show("Member is added!");
-                //pass on information
-                Member MemberSummary = new Member(strFirstName, strLastName, strPhone, strEmail, strSelectedCardType, strCreditCardNumber, strGender, bytAge, shtWeight, strPersonalFitnessGoal);
-
-                //close window
-                MembershipInfoConfirmation winConfirmation = new MembershipInfoConfirmation(MemberSummary);
-                winConfirmation.Show();
-                this.Close();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error in export process: " + ex.Message);
-            }
-
-           
-        }
-            
-
-        
-        //create method: validate phone number (only 10 digits)
-        public bool ValidatePhone(string phone)
-        {
             long lngPhone;
 
             if (!Int64.TryParse(phone, out lngPhone))
@@ -278,18 +190,7 @@ namespace FitnessClub
                 return false;
             }
 
-            
-            return true;
-        }
-
-
-        //create method: validate email address
-        //contain an "@" and a "."; 
-        //at least 1 character before @; 
-        //at least 1 character between @ and .
-        //at least 2 characters after the period
-        public bool ValidateEmail(string email)
-        {
+            //validate email
             if (!email.Contains("@") || !email.Contains("."))
             {
                 MessageBox.Show("Please enter a valid email address that contains @ and a period.");
@@ -320,13 +221,10 @@ namespace FitnessClub
                 return false;
             }
 
-            return true;
-        }
+            //validate credit card number and type
+            
+            string strSelectedCardType = ((ComboBoxItem)selectedcardtype).Content.ToString();
 
-
-        //create method: validate credit card number and credit card type
-        private bool ValidateCreditCard(string creditCardType, string creditCardNumber)
-        {
             //1. Declare a variables
             //   - capture credit card number, and credit card type
             //   - counter for loop
@@ -357,8 +255,8 @@ namespace FitnessClub
             //           - return false with error message
 
             //1.
-            string strCardTypeInput = creditCardType;
-            string strCardNum = creditCardNumber;
+            string strCardTypeInput = strSelectedCardType;
+            string strCardNum = cardnumber;
             long lngOut;
             bool bolValid = false;
             int i;
@@ -448,21 +346,120 @@ namespace FitnessClub
 
                 imgCard.Visibility = Visibility.Visible;
 
-                if (strCardType == strCardTypeInput)
-                    return true;
-                else
+                if (strCardType != strCardTypeInput)
                 {
                     MessageBox.Show("The selected credit card type doesn't match with the credit card number provided.");
                     return false;
                 }
-               
+
             }
             else
             {
                 MessageBox.Show("The credit card number is not valid.");
                 return false;
             }
+
+            //validate age
+            byte bytAge;
+            if (age != "")
+            {
+                if (!byte.TryParse(age, out bytAge))
+                {
+                    MessageBox.Show("Please enter a valid age.");
+                    return false;
+                }
+                else
+                {
+                    bytAge = Convert.ToByte(age);
+                }
+            }
+            else
+                bytAge = 0;
+
+            //validate weight, capture inputs
+            short shtWeight;
+            if (weight != "")
+            {
+                if (!Int16.TryParse(weight, out shtWeight))
+                {
+                    MessageBox.Show("Please enter a valid weight.");
+                    return false;
+                }
+                else
+                {
+                    shtWeight = Convert.ToInt16(weight);
+                }
+            }
+            else
+                shtWeight = 0;
+
+            //capture personal fitness goal
+            string strGoal;
+            if (selectedgoal != null)
+            {
+                strGoal = ((ComboBoxItem)selectedgoal).Content.ToString();
+            }
+            else
+                strGoal = "";
+
+            newMember= new Member(InfoFromPrevWindow, firstname, lastname, phone, email, ((ComboBoxItem)selectedcardtype).Content.ToString(), cardnumber, ((ComboBoxItem)selectedgender).Content.ToString(), bytAge, shtWeight, strGoal);
+            
+            //Add the new member object to the list
+            memberList.Add(newMember);
+
+            //pass on information
+            MemberSummary = new Member(firstname, lastname, phone, email, ((ComboBoxItem)selectedcardtype).Content.ToString(), cardnumber, ((ComboBoxItem)selectedgender).Content.ToString(), bytAge, shtWeight, strGoal);
+
+
+            //Return true (as status) to the calling code
+            return true;
+
         }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            //declare variables
+            bool bolStatus;
+            string strFilePath = @"..\..\..\Data\Member.json";
+
+            //call AddMember method, and passing all needed inputs
+            //the method will return a bool type as the status of the Add operation
+            bolStatus = addMember(txtFirstName.Text, txtLastName.Text, txtPhone.Text, txtEmail.Text, cboCreditCardType.SelectedItem, txtCreditCardNumber.Text, cboGender.SelectedItem, txtAge.Text, txtWeight.Text, cboPersonalFitnessGoal.SelectedItem);
+
+            if (bolStatus)
+            {
+                try
+                {
+                    //serialize the new list of member to json format
+                    string jsonData = JsonConvert.SerializeObject(memberList);
+
+                    //use System.IO.File to write over the file with the json data
+                    System.IO.File.WriteAllText(strFilePath, jsonData);
+
+                    MessageBox.Show("Member is added!");
+
+                   
+                    //close window
+                    MembershipInfoConfirmation winConfirmation = new MembershipInfoConfirmation(MemberSummary);
+                    winConfirmation.Show();
+                    this.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error in export process: " + ex.Message);
+                }
+            }
+           
+        }
+            
+
+        
+      
+
+       
 
         public static string ReverseString(string s)
         {
