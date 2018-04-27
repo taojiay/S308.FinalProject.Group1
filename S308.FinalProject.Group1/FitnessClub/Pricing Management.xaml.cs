@@ -32,19 +32,20 @@ namespace FitnessClub
 
             cbxType.SelectedIndex = -1;
             txtPrice.Text = "";
-            ckbAvailable.IsChecked = false;
+            ckbAvailable.IsChecked = true;
             cbxFeature.SelectedIndex = -1;
             txtFeaturePrice.Text = "";
 
         }
-        /*
+        
         //when click on membership "submit" button:
         //validation:
         
         private void btnMembershipSubmit_Click(object sender, RoutedEventArgs e)
         {
             string strFilePath = @"..\..\..\Data\MembershipPrice.json";
-            decimal price;
+            decimal decPrice;
+            bool bolAvailability;
             
             //check if type and price fields are filled or selected
             if (cbxType.SelectedIndex == -1)
@@ -52,14 +53,27 @@ namespace FitnessClub
                 MessageBox.Show("Please select a membership type.");
                 return;
             }
-            if (!Decimal.TryParse(txtPrice.Text.Trim(), out price))
+
+
+            //check if price can be convert to decimal
+                if (!Decimal.TryParse(txtPrice.Text.Trim(), out decPrice))
             {
                 MessageBox.Show("Please enter a decimal number for Price.");
                 return;
             }
 
+            //capture input
+            ComboBoxItem cbiSelectedMembershipType = (ComboBoxItem)cbxType.SelectedItem;
+            string strSelectedMembershipType = cbiSelectedMembershipType.Content.ToString();
+
+            decPrice = Convert.ToDecimal(txtPrice.Text.Trim());
+            if (ckbAvailable.IsChecked == true)
+                bolAvailability = true;
+            else
+                bolAvailability = false;
+
             //instantiate a new membership plan price from the input and add it to the list
-            MembershipPrice membershippriceNew = new MembershipPrice(txtPrice.Text.Trim(), price);
+            MembershipPrice membershippriceNew = new MembershipPrice(strSelectedMembershipType, decPrice, bolAvailability);
             MembershipPriceIndex.Add(membershippriceNew);
 
             //import new membership plan price
@@ -97,7 +111,7 @@ namespace FitnessClub
          private void btnFeaturesSubmit_Click(object sender, RoutedEventArgs e)
         {
             string strFilePath = @"..\..\..\Data\FeaturePrice.json";
-            decimal price;
+            decimal decFeaturePrice;
 
             //check if type and price the fields are filled or selected
             //Is Feature mandatory????
@@ -106,14 +120,20 @@ namespace FitnessClub
                 MessageBox.Show("Please confirm that you don't want any additional features.");
                 return;
             }
-            if (!Decimal.TryParse(txtFeaturePrice.Text.Trim(), out price))
+            if (!Decimal.TryParse(txtFeaturePrice.Text.Trim(), out decFeaturePrice))
             {
                 MessageBox.Show("Please enter a decimal number for Price.");
                 return;
             }
 
+            //capture inputs
+            ComboBoxItem cbiSelectedFeatureType = (ComboBoxItem)cbxFeature.SelectedItem;
+            string strSelectedFeatureType = cbiSelectedFeatureType.Content.ToString();
+
+            decFeaturePrice = Convert.ToDecimal(txtFeaturePrice.Text.Trim());
+
             //instantiate a new feature price from the input and add it to the list
-            FeaturePrice featurepriceNew = new FeaturePrice(txtFeaturePrice.Text.Trim(), price);
+            FeaturesPrice featurepriceNew = new FeaturesPrice(strSelectedFeatureType, decFeaturePrice);
             FeaturePriceIndex.Add(featurepriceNew);
 
             //import new feature price
@@ -156,6 +176,6 @@ namespace FitnessClub
             this.Close();
         }
 
-    */
+    
     }
 }
