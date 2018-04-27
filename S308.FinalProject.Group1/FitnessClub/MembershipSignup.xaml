@@ -34,7 +34,7 @@
             <ComboBoxItem Content="Female"/>
             <ComboBoxItem Content="Not Provided"/>
         </ComboBox>
-        <ComboBox x:Name="cboCreditCardType" HorizontalAlignment="Left" Margin="91,381,0,0" VerticalAlignment="Top" Width="141" TabIndex="4" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20">
+        <ComboBox x:Name="cboCreditCardType" HorizontalAlignment="Left" Margin="91,381,0,0" VerticalAlignment="Top" Width="250" TabIndex="4" Foreground="#FF596770" FontFamily="Sitka Display" FontSize="20">
             <ComboBoxItem Content="VISA"/>
             <ComboBoxItem Content="MasterCard"/>
             <ComboBoxItem Content="Discover"/>

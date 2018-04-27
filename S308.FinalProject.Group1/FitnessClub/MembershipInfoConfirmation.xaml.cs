@@ -44,33 +44,35 @@ namespace FitnessClub
             //default blank member for the default constructor
             InfoFromPrevWindow = new Member();
         }
-        public MembershipInfoConfirmation(Member newMember)
+
+        public MembershipInfoConfirmation(Member MemberSummary)
         {
             InitializeComponent();
 
             //assigning the property from the member class that was passed into this overridden constructor
-            InfoFromPrevWindow = newMember;
+            InfoFromPrevWindow = MemberSummary;
+
 
             //Display the summary
-            ShowSummary(InfoFromPrevWindow);
+           ShowSummary();
         }
 
         //create method: show summary of membership confirmation
-        public void ShowSummary(Member summary)
+
+        public void ShowSummary()
         {
-            lblFirstNameInput.Content = summary.FirstName;
-            lblLastNameInput.Content = summary.LastName;
-            lblPhoneInput.Content = summary.Phone;
-            lblEmailInput.Content = summary.Email;
-            lblCreditCardTypeInput.Content = summary.CreditCardType;
-            lblCreditCardNumberInput.Content = summary.CreditCardNumber;
-            lblGenderInput.Content = summary.Gender;
-            lblAgeInput.Content = summary.Age.ToString();
-            lblWeightInput.Content = summary.Weight.ToString();
-            lblPersonalFitnessGoalInput.Content = summary.PersonalFitnessGoal;
+            lblFirstNameInput.Content = InfoFromPrevWindow.FirstName;
+            lblLastNameInput.Content = InfoFromPrevWindow.LastName;
+            lblPhoneInput.Content = InfoFromPrevWindow.Phone;
+            lblEmailInput.Content = InfoFromPrevWindow.Email;
+            lblCreditCardTypeInput.Content = InfoFromPrevWindow.CreditCardType;
+            lblCreditCardNumberInput.Content = InfoFromPrevWindow.CreditCardNumber;
+            lblGenderInput.Content = InfoFromPrevWindow.Gender;
+            lblAgeInput.Content = InfoFromPrevWindow.Age.ToString();
+            lblWeightInput.Content = InfoFromPrevWindow.Weight.ToString();
+            lblPersonalFitnessGoalInput.Content = InfoFromPrevWindow.PersonalFitnessGoal;
 
         }
-
 
 
         //close this window and back to the membership sale window

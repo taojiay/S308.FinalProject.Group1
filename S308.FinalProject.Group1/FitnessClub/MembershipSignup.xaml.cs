@@ -61,9 +61,6 @@ namespace FitnessClub
             //assigning the property from the member class that was passed into this overridden constructor
             InfoFromPrevWindow = QuoteInfo;
 
-
-
-
            
         }
 
@@ -220,15 +217,21 @@ namespace FitnessClub
                 System.IO.File.WriteAllText(strFilePath, jsonData);
 
                 MessageBox.Show("Member is added!");
+                //pass on information
+                Member MemberSummary = new Member(strFirstName, strLastName, strPhone, strEmail, strSelectedCardType, strCreditCardNumber, strGender, bytAge, shtWeight, strPersonalFitnessGoal);
 
-                MembershipInfoConfirmation winConfirmation = new MembershipInfoConfirmation();
+                //close window
+                MembershipInfoConfirmation winConfirmation = new MembershipInfoConfirmation(MemberSummary);
                 winConfirmation.Show();
                 this.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error in export process: " + ex.Message);
             }
+
+           
         }
             
 

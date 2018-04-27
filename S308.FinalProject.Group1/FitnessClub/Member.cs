@@ -79,5 +79,19 @@ namespace FitnessClub
             PersonalFitnessGoal = personalfitnessGoal;
         }
 
+        public Member(string firstName, string lastName, string phone, string email, string creditcardType, string creditcardNumber, string gender, byte age, short weight, string personalfitnessGoal)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Phone = phone;
+            Email = email;
+            CreditCardType = creditcardType;
+            CreditCardNumber = creditcardNumber;
+            Gender = gender;
+            Age = age;
+            Weight = weight;
+            PersonalFitnessGoal = personalfitnessGoal;
+        }
+
     }
 }
