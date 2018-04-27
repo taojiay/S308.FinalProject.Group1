@@ -36,17 +36,64 @@ namespace FitnessClub
             cbxFeature.SelectedIndex = -1;
             txtFeaturePrice.Text = "";
 
+            MembershipPriceIndex = GetMembershipPriceDataFromFile();
+            FeaturePriceIndex = GetFeaturesPriceDataFromFile();
+            
         }
-        
+
+        //method: get membership price data from json file
+        public List<MembershipPrice> GetMembershipPriceDataFromFile()
+        {
+            List<MembershipPrice> MembershipPricing = new List<MembershipPrice>();
+
+            string strFilePath = @"../../../Data/MembershipPricing.json";
+
+            try
+            {
+                string jsonData = File.ReadAllText(strFilePath);
+                MembershipPricing = JsonConvert.DeserializeObject<List<MembershipPrice>>(jsonData);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading Membership Price from file: " + ex.Message);
+            }
+
+            return MembershipPricing;
+        }
+
+        //method: get additional features price data from json file
+        public List<FeaturesPrice> GetFeaturesPriceDataFromFile()
+        {
+            List<FeaturesPrice> FeaturesPricing = new List<FeaturesPrice>();
+
+            string strFilePath = @"../../../Data/AdditionalFeaturePricing.json";
+
+            try
+            {
+                string jsonData = File.ReadAllText(strFilePath);
+                FeaturesPricing = JsonConvert.DeserializeObject<List<FeaturesPrice>>(jsonData);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading Membership Price from file: " + ex.Message);
+            }
+
+            return FeaturesPricing;
+        }
+
         //when click on membership "submit" button:
         //validation:
-        
         private void btnMembershipSubmit_Click(object sender, RoutedEventArgs e)
         {
-            string strFilePath = @"..\..\..\Data\MembershipPrice.json";
+
+          
             decimal decPrice;
             bool bolAvailability;
+
+          
             
+      
+
             //check if type and price fields are filled or selected
             if (cbxType.SelectedIndex == -1)
             {
@@ -72,35 +119,25 @@ namespace FitnessClub
             else
                 bolAvailability = false;
 
+            //rewrite membership plan price
+            foreach (var x in MembershipPriceIndex)
+                if (x.MembershipType == strSelectedMembershipType)
+                {
+                    x.Price = decPrice;
+                    x.Availability = bolAvailability;
+
+                }
+
+         
+
             //instantiate a new membership plan price from the input and add it to the list
             MembershipPrice membershippriceNew = new MembershipPrice(strSelectedMembershipType, decPrice, bolAvailability);
             MembershipPriceIndex.Add(membershippriceNew);
 
-            //import new membership plan price
-            try
-            {
-                //serialize the new membership plan price to json format
-                string jsonData = JsonConvert.SerializeObject(MembershipPriceIndex);
-
-                //use System.IO.File to write over the file with the json data
-                System.IO.File.WriteAllText(strFilePath, jsonData);
-
-                MessageBox.Show("New membership plan price has been changed.");
-
-            }
-           
-            //if there is error in export process
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error in export process:" + ex.Message);
-            }
            
             //confirmation message
             MessageBox.Show("Price of membership plan "+ cbiSelectedMembershipType.Content + " has been changed to:" + txtPrice.Text);
             
-            //check if the price can be parsed
-            //????
-
         }
 
         //confirmation message
@@ -113,8 +150,28 @@ namespace FitnessClub
             string strFilePath = @"..\..\..\Data\FeaturePrice.json";
             decimal decFeaturePrice;
 
+            //import original feature price file
+            try
+            {
+                //use System.IO.File to read the entire data file
+                string jsonData = File.ReadAllText(strFilePath);
+
+                //serialize the json data to a list of campuses
+                FeaturePriceIndex = JsonConvert.DeserializeObject<List<FeaturesPrice>>(jsonData);
+
+                if (FeaturePriceIndex.Count >= 0)
+                    MessageBox.Show(FeaturePriceIndex.Count + " Features have been imported.");
+                else
+                    MessageBox.Show("No feature has been imported. Please check your file.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in import process: " + ex.Message);
+            }
+
+
             //check if type and price the fields are filled or selected
-            //Is Feature mandatory????
+
             if (cbxFeature.SelectedIndex == -1)
             {
                 MessageBox.Show("Please confirm that you don't want any additional features.");
