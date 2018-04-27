@@ -54,7 +54,7 @@ namespace FitnessClub
                 return;
             }
 
-
+            
             //check if price can be convert to decimal
                 if (!Decimal.TryParse(txtPrice.Text.Trim(), out decPrice))
             {

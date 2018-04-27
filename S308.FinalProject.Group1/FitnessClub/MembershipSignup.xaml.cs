@@ -50,6 +50,9 @@ namespace FitnessClub
             //instantiate a list to hold members
             memberList = new List<Member>();
 
+            //call the method to import current members' information and display in the datagrid
+            ImportMemberData();
+
             //default blank member info for the default constructor
             InfoFromPrevWindow = new Member();
         }
@@ -62,6 +65,27 @@ namespace FitnessClub
             InfoFromPrevWindow = QuoteInfo;
 
            
+        }
+
+        private void ImportMemberData()
+        {
+            string strFilePath = @"..\..\..\Data\Member.json";
+
+            try
+            {
+                //use System.IO.File to read the entire data file
+                string jsonData = File.ReadAllText(strFilePath);
+
+                //serialize the json data to a list of customers
+                memberList = JsonConvert.DeserializeObject<List<Member>>(jsonData);
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in import process: " + ex.Message);
+            }
+
         }
 
         //create main menu button function: link with main meanu and close current file
