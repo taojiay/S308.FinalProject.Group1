@@ -32,6 +32,15 @@ namespace FitnessClub
         {
             InitializeComponent();
 
+           
+            //default blank member info for the default constructor
+            InfoFromPrevWindow = new Member();
+        }
+
+        public MembershipSignup(Member QuoteInfo)
+        {
+            InitializeComponent();
+
             //clear all the inputs
             txtFirstName.Text = "";
             txtLastName.Text = "";
@@ -53,18 +62,10 @@ namespace FitnessClub
             //call the method to import current members' information and display in the datagrid
             ImportMemberData();
 
-            //default blank member info for the default constructor
-            InfoFromPrevWindow = new Member();
-        }
-
-        public MembershipSignup(Member QuoteInfo)
-        {
-            InitializeComponent();
-
             //assigning the property from the member class that was passed into this overridden constructor
             InfoFromPrevWindow = QuoteInfo;
 
-           
+            
         }
 
         private void ImportMemberData()

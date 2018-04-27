@@ -266,7 +266,7 @@ namespace FitnessClub
                 Member QuoteInfo = new Member(strmembershiptype, datstartdate, datenddate, decmembershipcostpermonth, decsubtotal, stradditionalfeatures, dectotal);
 
                 //open next window and close this window
-                MembershipSignup winMembershipSignup = new MembershipSignup();
+                MembershipSignup winMembershipSignup = new MembershipSignup(QuoteInfo);
                 winMembershipSignup.Show();
                 this.Close();
             }

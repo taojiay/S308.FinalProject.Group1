@@ -28,6 +28,14 @@ namespace FitnessClub
             InitializeComponent();
 
 
+            //default blank member for the default constructor
+            InfoFromPrevWindow = new Member();
+        }
+
+        public MembershipInfoConfirmation(Member MemberSummary)
+        {
+            InitializeComponent();
+
             //clear all the output
             lblFirstNameInput.Content = "";
             lblLastNameInput.Content = "";
@@ -40,14 +48,6 @@ namespace FitnessClub
             lblWeightInput.Content = "";
             lblPersonalFitnessGoalInput.Content = "";
 
-
-            //default blank member for the default constructor
-            InfoFromPrevWindow = new Member();
-        }
-
-        public MembershipInfoConfirmation(Member MemberSummary)
-        {
-            InitializeComponent();
 
             //assigning the property from the member class that was passed into this overridden constructor
             InfoFromPrevWindow = MemberSummary;
