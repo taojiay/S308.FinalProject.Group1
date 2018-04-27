@@ -46,10 +46,15 @@ namespace FitnessClub
             string strFilePath = @"..\..\..\Data\MembershipPrice.json";
             decimal price;
             
-            //check if type and price the fields are filled or selected
+            //check if type and price fields are filled or selected
             if (cbxType.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a membership type.");
+                return;
+            }
+            if (!Decimal.TryParse(txtPrice.Text.Trim(), out price))
+            {
+                MessageBox.Show("Please enter a demical number for Price.");
                 return;
             }
 
@@ -101,7 +106,12 @@ namespace FitnessClub
                 MessageBox.Show("Please confirm that you don't want any additional features.");
                 return;
             }
-            
+            if (!Decimal.TryParse(txtFeaturePrice.Text.Trim(), out price))
+            {
+                MessageBox.Show("Please enter a demical number for Price.");
+                return;
+            }
+
             //instantiate a new feature price from the input and add it to the list
             FeaturePrice featurepriceNew = new FeaturePrice(txtFeaturePrice.Text.Trim(), price);
             FeaturePriceIndex.Add(featurepriceNew);
@@ -126,7 +136,7 @@ namespace FitnessClub
             }
            
             //confirmation message
-            MessageBox.Show("Price of Feature (feature name....???) has been changed to:" + txtPrice.Text);
+            MessageBox.Show("Price of Feature (feature name....???) has been changed to:" + txtFeaturePrice.Text);
            
             //check if the price can be parsed
             //???
