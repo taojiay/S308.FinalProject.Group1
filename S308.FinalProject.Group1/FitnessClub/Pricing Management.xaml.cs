@@ -23,6 +23,7 @@ namespace FitnessClub
     public partial class Pricing_Management : Window
  {
          List<MembershipPrice> MembershipPriceIndex;
+         List<FeaturePrice> FeaturePriceIndex;
    
         public Pricing_Management()
         {
@@ -51,7 +52,7 @@ namespace FitnessClub
                 return;
             }
 
-            //instantiate a new price from the input and add it to the list
+            //instantiate a new membership plan price from the input and add it to the list
             MembershipPrice membershippriceNew = new MembershipPrice(txtPrice.Text.Trim(), price);
             MembershipPriceIndex.Add(membershippriceNew);
 
@@ -72,7 +73,8 @@ namespace FitnessClub
             {
                 MessageBox.Show("Error in export process:" + ex.Message);
             }
-            MessageBox.Show("Membership Type has been changed to:" + txtPrice.Text);
+            //confirmation message
+            MessageBox.Show("Price of membership plan...??? has been changed to:" + txtPrice.Text);
             //check if the price can be parsed
             //????
 
@@ -84,19 +86,46 @@ namespace FitnessClub
         //validation:
       
          private void btnFeaturesSubmit_Click(object sender, RoutedEventArgs e)
-        {  
+        {
+            string strFilePath = @"..\..\..\Data\FeaturePrice.json";
+            decimal price;
+
             //check if type and price the fields are filled or selected
             if (cbxFeature.SelectedIndex == -1)
             {
                 MessageBox.Show("Please confirm that you don't want any additional features.");
                 return;
             }
+            //instantiate a new feature price from the input and add it to the list
+            FeaturePrice featurepriceNew = new FeaturePrice(txtFeaturePrice.Text.Trim(), price);
+            FeaturePriceIndex.Add(featurepriceNew);
+
+            //import new feature price
+            try
+            {
+                //serialize the new feature price to json format
+                string jsonData = JsonConvert.SerializeObject(FeaturePriceIndex);
+
+                //use System.IO.File to write over the file with the json data
+                System.IO.File.WriteAllText(strFilePath, jsonData);
+
+                MessageBox.Show("New feature price has been changed.");
+
+            }
+            //if there is error in export process
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in export process:" + ex.Message);
+            }
+            //confirmation message
+            MessageBox.Show("Price of Feature....??? has been changed to:" + txtPrice.Text);
             //check if the price can be parsed
-   
+            //???
+
 
         }
 
-        //confirmation message
+        
 
         //create back to main meanu function, close current window
 
