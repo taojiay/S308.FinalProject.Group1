@@ -1,6 +1,8 @@
 ﻿//logo image source: 123RF.com
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,9 @@ namespace FitnessClub
     /// Interaction logic for Pricing_Management.xaml
     /// </summary>
     public partial class Pricing_Management : Window
-    {
+ {
+         List<MembershipPrice> MembershipPriceIndex;
+   
         public Pricing_Management()
         {
             InitializeComponent();
@@ -38,13 +42,39 @@ namespace FitnessClub
         
         private void btnMembershipSubmit_Click(object sender, RoutedEventArgs e)
         {
+            string strFilePath = @"..\..\..\Data\MembershipPrice.json";
+            decimal price;
             //check if type and price the fields are filled or selected
             if (cbxType.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a membership type.");
                 return;
             }
+
+            //instantiate a new price from the input and add it to the list
+            MembershipPrice membershippriceNew = new MembershipPrice(txtPrice.Text.Trim(), price);
+            MembershipPriceIndex.Add(membershippriceNew);
+
+            //import new membership plan price
+            try
+            {
+                //serialize the new membership plan price to json format
+                string jsonData = JsonConvert.SerializeObject(MembershipPriceIndex);
+
+                //use System.IO.File to write over the file with the json data
+                System.IO.File.WriteAllText(strFilePath, jsonData);
+
+                MessageBox.Show("New membership plan price has been changed.");
+
+            }
+            //if there is error in export process
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in export process:" + ex.Message);
+            }
+            MessageBox.Show("Membership Type has been changed to:" + txtPrice.Text);
             //check if the price can be parsed
+            //????
 
         }
 
