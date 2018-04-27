@@ -204,7 +204,7 @@ namespace FitnessClub
             if (ckbPersonalTrainingPlan.IsChecked == true && ckbLockerRental.IsChecked == true)
             { 
                 decMonthlyFeaturesPrice = decMonthlyLockerRental + decMonthlyPersonalTrainingPlan;
-                strFeatures = strPersonalTrainingPlan + Environment.NewLine + strLockerRental.PadLeft(48);
+                strFeatures = strPersonalTrainingPlan +", " +strLockerRental;
             }
             else if (ckbPersonalTrainingPlan.IsChecked == true && ckbLockerRental.IsChecked == false)
             {
@@ -235,7 +235,7 @@ namespace FitnessClub
                 + "End Date: " + datEndDate.ToShortDateString() + Environment.NewLine
                 + "Membership Cost Per Month: " + decMonthlyMembershipPrice.ToString("C", new System.Globalization.CultureInfo("en-US")) + Environment.NewLine
                 + "Subtotal: " + decMembershipPrice.ToString("C", new System.Globalization.CultureInfo("en-US")) + Environment.NewLine
-                + "Additional Features: " + strFeatures + Environment.NewLine
+                + "Additional Features: " + Environment.NewLine + strFeatures + Environment.NewLine
                 + "Total: " + decTotalPrice.ToString("C", new System.Globalization.CultureInfo("en-US"));
 
             lblPricingQuoteResult.Content = strQuote;
