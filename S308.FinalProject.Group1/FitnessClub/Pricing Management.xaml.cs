@@ -54,7 +54,7 @@ namespace FitnessClub
             }
             if (!Decimal.TryParse(txtPrice.Text.Trim(), out price))
             {
-                MessageBox.Show("Please enter a demical number for Price.");
+                MessageBox.Show("Please enter a decimal number for Price.");
                 return;
             }
 
@@ -108,7 +108,7 @@ namespace FitnessClub
             }
             if (!Decimal.TryParse(txtFeaturePrice.Text.Trim(), out price))
             {
-                MessageBox.Show("Please enter a demical number for Price.");
+                MessageBox.Show("Please enter a decimal number for Price.");
                 return;
             }
 
