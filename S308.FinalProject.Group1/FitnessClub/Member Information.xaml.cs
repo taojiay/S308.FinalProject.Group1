@@ -106,6 +106,7 @@ namespace FitnessClub
                 m.MembershipCostPerMonth = Math.Round(m.MembershipCostPerMonth, 2);
 
             }
+            /*
             //Advanced option: display records that expire soon in a different color
             foreach (DataGridViewRow row in vendorsDataGridView.Rows)
             {
@@ -128,7 +129,7 @@ namespace FitnessClub
                 dtgResult.Items.Refresh();
             }
 
-
+            */
 
 
         }

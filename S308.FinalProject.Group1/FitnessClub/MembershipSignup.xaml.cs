@@ -31,7 +31,7 @@ namespace FitnessClub
         public MembershipSignup()
         {
             InitializeComponent();
-           
+
 
             //default blank member info for the default constructor
             InfoFromPrevWindow = new Member();
@@ -65,7 +65,7 @@ namespace FitnessClub
             //assigning the property from the member class that was passed into this overridden constructor
             InfoFromPrevWindow = QuoteInfo;
 
-            
+
         }
 
         private void ImportMemberData()
@@ -222,7 +222,7 @@ namespace FitnessClub
             }
 
             //validate credit card number and type
-            
+
             string strSelectedCardType = ((ComboBoxItem)selectedcardtype).Content.ToString();
 
             //1. Declare a variables
@@ -402,8 +402,36 @@ namespace FitnessClub
             else
                 strGoal = "";
 
-            newMember= new Member(InfoFromPrevWindow, firstname, lastname, phone, email, ((ComboBoxItem)selectedcardtype).Content.ToString(), cardnumber, ((ComboBoxItem)selectedgender).Content.ToString(), bytAge, shtWeight, strGoal);
-            
+            //Validate that a member is not purchaseing a membership that overlaps the timeframe of a previously purchased membership
+            //1. previous start < now end
+            //2. previous start < now start and previous end > now end
+            //3. previous end > now start
+            DateTime datPreviousStart, datPreviousEnd;
+            foreach (var m in memberList)
+                if (m.FirstName == firstname && m.LastName == lastname && m.Phone == phone)
+                {
+                    datPreviousStart = m.StartDate;
+                    datPreviousEnd = m.EndDate;
+                    if(datPreviousEnd < InfoFromPrevWindow.EndDate)
+                    {
+                        MessageBox.Show("The chosen time is overlapping with the previously purchased membership.");
+                        return false;
+                    }
+                    else if(datPreviousStart < InfoFromPrevWindow.StartDate && datPreviousEnd > InfoFromPrevWindow.EndDate)
+                    {
+                        MessageBox.Show("The chosen time is overlapping with the previously purchased membership.");
+                        return false;
+                    }
+                    else if(datPreviousEnd > InfoFromPrevWindow.StartDate)
+                    {
+                        MessageBox.Show("The chosen time is overlapping with the previously purchased membership.");
+                        return false;
+                    }
+                }
+
+
+                    newMember = new Member(InfoFromPrevWindow, firstname, lastname, phone, email, ((ComboBoxItem)selectedcardtype).Content.ToString(), cardnumber, ((ComboBoxItem)selectedgender).Content.ToString(), bytAge, shtWeight, strGoal);
+
             //Add the new member object to the list
             memberList.Add(newMember);
 
@@ -440,7 +468,7 @@ namespace FitnessClub
 
                     MessageBox.Show("Member is added!");
 
-                   
+
                     //close window
                     MembershipInfoConfirmation winConfirmation = new MembershipInfoConfirmation(MemberSummary);
                     winConfirmation.Show();
@@ -452,14 +480,14 @@ namespace FitnessClub
                     MessageBox.Show("Error in export process: " + ex.Message);
                 }
             }
-           
+
         }
-            
 
-        
-      
 
-       
+
+
+
+
 
         public static string ReverseString(string s)
         {
@@ -469,17 +497,101 @@ namespace FitnessClub
         }
 
 
-
         //when click "search" (optional)
-        //validation:
-        //check if first name, last name, credit card are filled
-        //capture inputs
-        //declare variables
-        //run query for the membership information json file and capture values
-        //fill the result in the form
+        private void btnSearchforPrefill_Click(object sender, RoutedEventArgs e)
+        {
+            //validation:
+            //check if first name, last name, credit card are filled
+            if (txtFirstName.Text.Trim() == "")
+            {
+                MessageBox.Show("First name is required for search function.");
+                return;
+            }
+
+            if (txtLastName.Text.Trim() == "")
+            {
+                MessageBox.Show("Last name is required for search function.");
+                return;
+            }
+
+
+            if (txtPhone.Text.Trim() == "")
+            {
+                MessageBox.Show("Phone is required for search function.");
+                return;
+            }
+
+            //validate phone
+            long lngPhone;
+
+            if (!Int64.TryParse(txtPhone.Text.Trim(), out lngPhone))
+            {
+                MessageBox.Show("Phone number contain only numbers.");
+                return;
+            }
+
+            if (txtPhone.Text.Trim().Length != 10)
+            {
+                MessageBox.Show("Phone number must contain 10 digits.");
+                return;
+            }
+
+
+            //declare variables to capture inputs
+            string strFirstName, strLastName, strPhone;
+            strFirstName = txtFirstName.Text.Trim();
+            strLastName = txtLastName.Text.Trim();
+            strPhone = txtPhone.Text.Trim();
+
+
+            //run query for the membership information json file and capture values
+            foreach (var m in memberList)
+                if (m.FirstName == strFirstName && m.LastName == strLastName && m.Phone == strPhone)
+                {
+                    //fill the result in the form
+                    txtEmail.Text = m.Email;
+
+                    foreach (ComboBoxItem i in cboCreditCardType.Items)
+                    {
+                        if(i.Content.ToString() == m.CreditCardType)
+                            cboCreditCardType.SelectedItem = i;
+                    }
 
 
 
+                    txtCreditCardNumber.Text = m.CreditCardNumber;
+
+
+                    foreach (ComboBoxItem i in cboGender.Items)
+                    {
+                        if (i.Content.ToString() == m.Gender)
+                            cboGender.SelectedItem = i;
+                    }
+                   
+
+
+                    if (m.Age != 0)
+                        txtAge.Text = m.Age.ToString();
+                    if (m.Weight != 0)
+                        txtWeight.Text = m.Weight.ToString();
+
+                    if (m.PersonalFitnessGoal != "")
+                    {
+                        foreach (ComboBoxItem i in cboPersonalFitnessGoal.Items)
+                        {
+                            if (i.Content.ToString() == m.PersonalFitnessGoal)
+                                cboPersonalFitnessGoal.SelectedItem = i;
+                        }
+                    }
+
+                    if (txtEmail.Text.Trim() == "")
+                    {
+                        MessageBox.Show("No record found.");
+                    }
+
+                }
+
+        }
 
 
     }
