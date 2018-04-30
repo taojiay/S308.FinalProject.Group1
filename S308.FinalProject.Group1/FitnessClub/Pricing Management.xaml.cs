@@ -160,12 +160,12 @@ namespace FitnessClub
 
             if (cbxFeature.SelectedIndex == -1)
             {
-                MessageBox.Show("Please confirm that you don't want any additional features.");
+                MessageBox.Show("Please select an additional feature that you want to change price.");
                 return;
             }
             if (!Decimal.TryParse(txtFeaturePrice.Text.Trim(), out decFeaturePrice))
             {
-                MessageBox.Show("Please enter a decimal number for Price.");
+                MessageBox.Show("Please enter a decimal number for price.");
                 return;
             }
 

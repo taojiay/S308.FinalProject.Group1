@@ -106,18 +106,7 @@ namespace FitnessClub
                 m.MembershipCostPerMonth = Math.Round(m.MembershipCostPerMonth, 2);
 
             }
-            /*
-            //Advanced option: display records that expire soon in a different color
-            foreach (DataGridViewRow row in vendorsDataGridView.Rows)
-            {
-                var now = DateTime.Now;
-                var expirationDate = DateTime.Parse(m.EndDate.ToShortDateString());
-                var sevenDayBefore = expirationDate.AddDays(-7);
-                if (now > sevenDayBefore && now < expirationDate)
-                {
-                    Row
-                    }
-            }
+
             //set the source of the datagrid and refresh
             if (memberSearch.Count()==0)
             {
@@ -128,8 +117,7 @@ namespace FitnessClub
                 dtgResult.ItemsSource = memberSearch;
                 dtgResult.Items.Refresh();
             }
-
-            */
+            
 
 
         }
